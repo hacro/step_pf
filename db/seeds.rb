@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+SpotType.create!(
+    type_name: '休憩スポット'
+)
+SpotType.create!(
+    type_name: '遊び場'
+)

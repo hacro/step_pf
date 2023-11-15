@@ -1,0 +1,33 @@
+<h1>スポットの投稿</h1>
+
+<%=  form_with model: @post, local: true do |f| %>
+    <h3>休憩スポット or 遊び場</h3>
+    <div class="radio-btn">
+        <%= f.radio_button :spot_type_id, 1%>
+        <%= f.label :spot_type_id_1, "休憩スポット" %>
+        <%= f.radio_button :spot_type_id, 2%>
+        <%= f.label :spot_type_id_2, "遊び場" %>
+    </div>
+    <h3>説明（200文字以上）</h3>
+    <div class="field">
+        <%= f.text_area :caption %>
+    </div>
+
+    <h3>この施設があるところ</h3>
+    <div class="field">
+        <%= f.text_area :location%>
+    </div>
+    <h3>施設の詳細（施設の建物名や階数など）</h3>
+    <div class="field">
+        <%= f.text_area :spot_detail %>
+    </div>
+    <h3>その他（持ち物や注意するところ）</h3>
+    <div class="field">
+        <%= f.text_area :other_info %>
+    </div>
+    <h3>画像</h3>
+    <div class="field">
+        <%= f.file_field :image, accept: "image/*" %>
+    </div>
+    <%= f.submit "投稿する" %>
+<% end %>
