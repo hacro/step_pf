@@ -1,0 +1,90 @@
+<h1>スポットの投稿</h1>
+
+<%=  form_with model: @post, local: true do |f| %>
+    <h3>休憩スポット or 遊び場</h3>
+    <div class="radio-btn">
+        <%= f.radio_button :spot_type_id, 1%>
+        <%= f.label :spot_type_id_1, "休憩スポット" %>
+        <%= f.radio_button :spot_type_id, 2%>
+        <%= f.label :spot_type_id_2, "遊び場" %>
+    </div>
+    <h3>説明（200文字以上）</h3>
+    <div class="field">
+        <%= f.text_area :caption %>
+    </div>
+
+    <h3>この施設があるところ</h3>
+        <input id="address" type="text" value="" >
+        <input type="button" value="search" onclick=codeAddress()>
+        <div id="addressOnDisplay">
+            <%= f.text_area :location, placeholder: "ここに住所が入る" %>
+        </div>
+        <div id="g-map-search"></div>
+<%# 以下は別ファイル（CSSとJS）に後ほど記載 %>
+        <style>
+            #g-map-search{
+                height: 400px;
+                width: 600px;
+            }
+        </style>
+        <script>
+            const addressOnDisplay = document.getElementById('post_location');
+
+            let map
+// Google apiを使って、画面にマップを表示させるための記述　ここから↓↓↓
+            function initMap(){
+                geocoder = new google.maps.Geocoder()
+
+                tokyo = {lat: 35.6803997, lng: 139.7690174}
+
+                map = new google.maps.Map(document.getElementById('g-map-search'),{
+                    center: tokyo,
+                    zoom: 12,
+                });
+
+                marker = new google.maps.Marker({
+                    position: tokyo,
+                    map: map
+                });
+            }
+// Google apiを使って、画面にマップを表示させるための記述　ここまで↑↑↑
+
+// マップの検索ボタンが押されたとき　ここから↓↓↓
+            function codeAddress(){
+                geocoder = new google.maps.Geocoder();
+                inputAddress = document.getElementById('address').value;
+
+                geocoder.geocode({'address': inputAddress}, function(results, status){
+                    if(status == 'OK'){
+                        map.setCenter(results[0].geometry.location);
+                        marker = new google.maps.Marker({
+                            position: results[0].geometry.location,
+                            map: map
+                        });
+                        addressOnDisplay.value = results[0].formatted_address;
+                        // console.log(addressOnDisplay.value.substring(13));
+                        addressOnDisplay.value = addressOnDisplay.value.substring(13);
+                    }else{
+                        alert("住所が見つけられませんでした。");
+                    }
+                });
+            }
+// マップの検索ボタンが押されたとき　ここまで↑↑↑
+        </script>
+        <script src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyBkjessssoTOBm-duqZdsVGwbgexFeJcMo&callback=initMap" async defer ></script>
+<%# ここまで %>
+
+    <h3>施設の詳細（施設の建物名や階数など）</h3>
+    <div class="field">
+        <%= f.text_area :spot_detail %>
+    </div>
+    <h3>その他（持ち物や注意するところ）</h3>
+    <div class="field">
+        <%= f.text_area :other_info %>
+    </div>
+    <h3>画像</h3>
+    <div class="field">
+        <%= f.file_field :image, accept: "image/*" %>
+    </div>
+    <%= f.submit "投稿する" %>
+<% end %>
