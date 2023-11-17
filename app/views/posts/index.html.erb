@@ -1,9 +1,17 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>みんなの投稿</h1>
 
-
-<%= @posts.each do |post| %>
-    <%= image_tag post.image %>
-    <%= post.caption %>
-
+<% @posts.each do |post| %>
+    <div class="user-name">
+    <%# ここにユーザーのプロフ画像 %>
+        <%= image_tag post.user.get_profile_image(100, 100) %>
+        <%= post.user.name %>
+    </div>
+    <div class="post-item">
+        <% if post.image.present? %>
+            <%= image_tag post.image, :size => '500x300' %>
+        <% end %>
+        <%= post.spot_type.type_name %>
+        <%= post.caption %>
+        <%= post.location %>
+    </div>
 <% end %>
