@@ -1,1 +1,69 @@
+<div class="container">
+    <h1>ポスト</h1>
+    <div class="post-show">
+        <div class="user-info">
+            <%# user_showに飛ぶリンクを貼る %>
+            <%= image_tag @post.user.get_profile_image(50, 50) %>
+            <%= @post.user.name %>
+            <%# ログインユーザーがフォローしているかどうかのif文 %>
+            <button>フォローする</button>
+        </div>
+        <div class="post-detail">
+            <%= image_tag @post.image, :size => '680x300' %>
+            <p><%= @post.spot_type.type_name %></p>
+            <h3>説明</h3>
+            <p><%= @post.caption %></p>
+            <h3>この施設があるところ</h3>
+            <div id="location-address">
+                <p><%= @post.location %></p>
+            </div>
+            <div id="location-map" style="width: 680px; height: 300px"></div>
+            <%# Google mapの表示 %>
+            <script>
+                let map;
+                function initMap(){
+                    const target = document.getElementById('location-map');
+                    const geocoder = new google.maps.Geocoder();
+                    const address = document.getElementById('location-address').children[0].textContent;
 
+                    geocoder.geocode({ address: address}, function(results, status){
+                        if(status === 'OK' && results[0] ){
+                            map = new google.maps.Map(target, {
+                                center: results[0].geometry.location,
+                                zoom: 15
+                            });
+                            marker = new google.maps.Marker({
+                                position: results[0].geometry.location,
+                                map: map
+                            });
+                        }else{
+                            target.remove();
+                            setTimeout(() => {
+                               alert('地図を見つけられませんでした。');
+                            }, 100);
+                        }
+                    });
+                }
+            </script>
+            <script src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyBkjessssoTOBm-duqZdsVGwbgexFeJcMo&callback=initMap" async defer ></script>
+            <h3>施設の詳細(施設の名前や階数など)</h3>
+            <%= @post.spot_detail %>
+            <h3>その他(持ち物や注意することなど)</h3>
+            <%= @post.other_info %>
+            <div class="create-date">
+                <%= l @post.created_at %>
+            </div>
+        </div>
+    </div>
+    <div class="favo-comment">
+        <%# いいね機能出来次第完成させる %>
+        <p>♡ 99いいね</p>
+        <p>○ 99コメント</p>
+    </div>
+    <div class="comment-index">
+        <%# もしコメントがある場合、eachでコメントを繰り返す %>
+        <div class="relode-btn">
+            <i class="fa-solid fa-circle-plus" style="color: #f7cbe8;"></i>
+        </div>
+    </div>
+</div>
