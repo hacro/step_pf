@@ -1,7 +1,7 @@
 <h1>みんなの投稿</h1>
 
 <% @posts.each do |post| %>
-    <%= link_to post_path(post.user) do %>
+    <%= link_to post_path(post) do %>
         <div class="user-name">
         <%# ここにユーザーのプロフ画像 %>
             <%= image_tag post.user.get_profile_image(100, 100) %>
@@ -17,3 +17,4 @@
         </div>
     <% end %>
 <% end %>
+<%= paginate @posts %>
