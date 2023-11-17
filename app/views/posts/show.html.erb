@@ -9,7 +9,9 @@
             <button>フォローする</button>
         </div>
         <div class="post-detail">
-            <%= image_tag @post.image, :size => '680x300' %>
+            <% if @post.image.present? %>
+                <%= image_tag @post.image, :size => '680x300' %>
+            <% end %>
             <p><%= @post.spot_type.type_name %></p>
             <h3>説明</h3>
             <p><%= @post.caption %></p>
