@@ -5,22 +5,28 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/bbc1209199.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
+    <header style="background-color: #F7CBE8" >
       <% if user_signed_in? %>
         <li>
-          <%= link_to "ホーム", posts_path %>
+          <%= link_to posts_path do %>
+            <i class="fa-solid fa-house" style="color: #ffffff;" ></i>
+            <% end %>
         </li>
         <li>
-          <%= link_to "新規投稿", new_post_path %>
+          <%= link_to new_post_path do %>
+            <i class="fa-solid fa-square-plus" style="color: #ffffff;"></i>
+          <% end %>
         </li>
         <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;" ></i>
+          <% end %>
         </li>
       <% end %>
     </header>
