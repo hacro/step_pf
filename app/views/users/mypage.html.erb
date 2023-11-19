@@ -1,0 +1,29 @@
+
+<div class="container">
+    <h1>マイページ</h1>
+    <h2><%= @user.name %></h2>
+    <div class="circle-btn" style="background-color: #F7CBE8;">
+        <span>
+            <i class="fa-regular fa-comment" style="color: #ffffff;"></i>
+        </span>
+            <h4>新規投稿</h4>
+        <span>
+            <%= image_tag @user.get_profile_image(352, 352) %>
+        </span>
+        <span>
+            <i class="fa-solid fa-gear" style="color: #ffffff;"></i>
+        </span>
+            <h4>プロフィール編集</h4>
+        <p><%= @user.introduction %></p>
+    </div>
+    <div class="index-btn" style="background-color: #F7CBE8;">
+        <span><i class="fa-regular fa-newspaper" style="color: #ffffff;"></i></span>
+        <h4>ポスト一覧</h4>
+        <span><i class="fa-solid fa-heart" style="color: #ffffff;"></i></span>
+        <h4>いいね一覧</h4>
+        <span><i class="fa-solid fa-users" style="color: #ffffff;"></i></span>
+        <h4>フォロー/フォロワー</h4>
+    </div>
+
+    <button><%= link_to "退会", unsubscribe_path(@user) %></button>
+</div>
