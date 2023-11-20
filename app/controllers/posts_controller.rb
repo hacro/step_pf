@@ -24,7 +24,18 @@ class PostsController < ApplicationController
 
   end
   def update
-    
+    @post = Post.find(params[:id])
+    if @post.update(post_image_params)
+      redirect_to posts_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
   end
 
 
@@ -33,4 +44,5 @@ class PostsController < ApplicationController
   def post_image_params
     params.require(:post).permit(:spot_type_id, :caption, :location, :spot_detail, :other_info, :image)
   end
+
 end

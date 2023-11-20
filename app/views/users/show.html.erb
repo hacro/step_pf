@@ -13,6 +13,9 @@
                 <%= @user.introduction %>
             <% end %>
         </div>
+        <% if @user != current_user %>
+            <button>フォロー</button>
+        <% end %>
     </div>
     <div class="user-posts-index">
         <h1>投稿したポスト</h1>

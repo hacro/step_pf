@@ -1,12 +1,17 @@
 <h1>みんなの投稿</h1>
 
 <% @posts.each do |post| %>
-    <%= link_to post_path(post) do %>
+    <%= link_to user_path(post.user_id) do %>
         <div class="user-name">
         <%# ここにユーザーのプロフ画像 %>
             <%= image_tag post.user.get_profile_image(100, 100) %>
             <%= post.user.name %>
         </div>
+    <% end %>
+    <% if post.user != current_user %>
+        <button>フォロー</button>
+    <% end %>
+    <%= link_to post_path(post) do %>
         <div class="post-item">
             <% if post.image.present? %>
                 <%= image_tag post.image, :size => '542x230' %>
