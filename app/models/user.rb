@@ -1,11 +1,12 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  
+  devise  :database_authenticatable, :registerable,
+          :recoverable, :rememberable, :validatable
+
   has_many :posts, dependent: :destroy
   has_one_attached :profile_image
+  has_many :favorites, dependent: :destroy
 
   def active_for_authentication?
     super && (is_withdrawal == false)
@@ -18,6 +19,11 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height])
   end
+
+  def already_favorited?(post)
+    self.favorites.exists?(post_id: post.id)
+  end
+
 
   validates :name, presence: true, length: { minimum: 2 }
 end

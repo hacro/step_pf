@@ -26,6 +26,19 @@
                         <%= image_tag @user.get_profile_image(100, 100) %>
                         <%= @user.name %>
                     </div>
+                    <div class="favorite_buttons">
+                        <% if current_user.already_favorited?(post) %>
+                            <%= link_to post_favorites_path(post), method: :delete do %>
+                                <i class="fa-solid fa-heart" style="color: #F94646;"></i>
+                            <% end %>
+                        <% else %>
+                            <%= link_to post_favorites_path(post), method: :post do %>
+                                <i class="fa-regular fa-heart" style="color: #F94646;"></i>
+                            <% end %>
+                        <% end %>
+                        <%= post.favorites.count %>いいね
+                    </div>
+
                     <div class="post-item">
                         <% if post.image.present? %>
                             <%= image_tag post.image, :size => '542x230' %>
