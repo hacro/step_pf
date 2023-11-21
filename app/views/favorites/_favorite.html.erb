@@ -1,0 +1,11 @@
+<%# いいね機能の部分テンプレート %>
+
+<% if post.favorited_by?(current_user) %>
+    <%= link_to create_favorite_path(post), method: :delete, remote: true do %>
+        <span><i class="fa-solid fa-heart fa-2xs" style="color: #F94646;"></i><%= post.favorites.count %>いいね</span>
+    <% end %>
+<% else %>
+    <%= link_to destroy_favorite_path(post), method: :post,remote: true do %>
+        <span><i class="fa-regular fa-heart fa-2xs" style="color: #F94646;"></i><%= post.favorites.count %>いいね</span>
+    <% end %>
+<% end %>
