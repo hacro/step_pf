@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_one_attached :profile_image
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def active_for_authentication?
     super && (is_withdrawal == false)
@@ -17,7 +18,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [width, height])
+    profile_image.variant(resize_to_fill: [width, height])
   end
 
   def already_favorited?(post)

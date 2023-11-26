@@ -1,93 +1,157 @@
+
 <div class="container">
     <h1>ポスト</h1>
-    <div class="post-show">
-        <div class="user-info">
-            <%= link_to user_path(@post.user_id) do %>
-                <%= image_tag @post.user.get_profile_image(50, 50) %>
-                <%= @post.user.name %>
-            <% end %>
-            <%# ログインユーザーがフォローしているかどうかのif文 一旦ログインユーザーでなければ表示させるようにしている状態%>
-            <% if @post.user != current_user %>
-                <button>フォローする</button>
-            <% end %>
-        </div>
-        <div class="post-detail">
-            <% if @post.image.present? %>
-                <%= image_tag @post.image, :size => '680x300' %>
-            <% end %>
-            <p><%= @post.spot_type.type_name %></p>
-            <h3>説明</h3>
-            <p><%= @post.caption %></p>
-            <h3>この施設があるところ</h3>
-            <div id="location-address">
-                <p><%= @post.location %></p>
+    <div class="contents-all">
+        <div class="post-show">
+            <div class="user-info">
+                <div class="about-user">
+                    <%= link_to user_path(@post.user_id) do %>
+                        <%= image_tag @post.user.get_profile_image(50, 50) %>
+                        <%= @post.user.name %>
+                    <% end %>
+                </div>
+                <%# ログインユーザーがフォローしているかどうかのif文 一旦ログインユーザーでなければ表示させるようにしている状態%>
+                <div class="follow-btn">
+                    <% if @post.user != current_user %>
+                        <button>フォローする</button>
+                    <% else %>
+                        <%= link_to post_path(@post), method: :delete do %>
+                            <span><i class="fa-solid fa-ellipsis" style="color: gray;"></i></span>
+                        <% end %>
+                    <% end %>
+                </div>
             </div>
-            <div id="location-map" style="width: 680px; height: 300px"></div>
-            <%# Google mapの表示 %>
-            <script>
-                let map;
-                function initMap(){
-                    const target = document.getElementById('location-map');
-                    const geocoder = new google.maps.Geocoder();
-                    const address = document.getElementById('location-address').children[0].textContent;
+            <div class="post-detail">
+                <% if @post.image.present? %>
+                    <%= image_tag @post.image %>
+                <% end %>
+                <p class="spot-type-name"><%= @post.spot_type.type_name %></p>
+                <h3>説明</h3>
+                <p><%= @post.caption %></p>
+                <h3>この施設があるところ</h3>
+                <div id="location-address">
+                    <p><%= @post.location %></p>
+                </div>
+                <div id="location-map" style="width: 100%; height: 500px"></div>
+                <%# Google mapの表示 %>
+                <script>
+                    let map;
+                    function initMap(){
+                        const target = document.getElementById('location-map');
+                        const geocoder = new google.maps.Geocoder();
+                        const address = document.getElementById('location-address').children[0].textContent;
 
-                    geocoder.geocode({ address: address}, function(results, status){
-                        if(status === 'OK' && results[0] ){
-                            map = new google.maps.Map(target, {
-                                center: results[0].geometry.location,
-                                zoom: 15
-                            });
-                            marker = new google.maps.Marker({
-                                position: results[0].geometry.location,
-                                map: map
-                            });
-                        }else{
-                            target.remove();
-                            setTimeout(() => {
-                               alert('地図を見つけられませんでした。');
-                            }, 100);
-                        }
-                    });
-                }
-            </script>
-            <script src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyBkjessssoTOBm-duqZdsVGwbgexFeJcMo&callback=initMap" async defer ></script>
-            <h3>施設の詳細(施設の名前や階数など)</h3>
-            <%= @post.spot_detail %>
-            <h3>その他(持ち物や注意することなど)</h3>
-            <%= @post.other_info %>
-            <div class="create-date">
-                <%= l @post.created_at %>
+                        geocoder.geocode({ address: address}, function(results, status){
+                            if(status === 'OK' && results[0] ){
+                                map = new google.maps.Map(target, {
+                                    center: results[0].geometry.location,
+                                    zoom: 15
+                                });
+                                marker = new google.maps.Marker({
+                                    position: results[0].geometry.location,
+                                    map: map
+                                });
+                            }else{
+                                target.remove();
+                                setTimeout(() => {
+                                alert('地図を見つけられませんでした。');
+                                }, 100);
+                            }
+                        });
+                    }
+                </script>
+                <script src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyBkjessssoTOBm-duqZdsVGwbgexFeJcMo&callback=initMap" async defer ></script>
+                <h3>施設の詳細(施設の名前や階数など)</h3>
+                <p><%= @post.spot_detail %></p>
+                <h3>その他(持ち物や注意することなど)</h3>
+                <p><%= @post.other_info %></p>
+                <div class="create-date">
+                    <%= l @post.created_at %>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="favo-comment">
-        <div class="about-favo">
-            <% if current_user.already_favorited?(@post) %>
-                <%= link_to post_favorites_path(@post), method: :delete do %>
-                    <i class="fa-solid fa-heart" style="color: #F94646;"></i>
-                <% end %>
-            <% else %>
-                <%= link_to post_favorites_path(@post), method: :post do %>
-                    <i class="fa-regular fa-heart" style="color: #9D9D9D;"></i>
+        <div class="favo-comment">
+            <div class="fc-count">
+                <div class="about-favo">
+                    <% if current_user.already_favorited?(@post) %>
+                        <%= link_to post_favorites_path(@post), method: :delete do %>
+                            <i class="fa-solid fa-heart" style="color: #F94646;"></i>
+                        <% end %>
+                    <% else %>
+                        <%= link_to post_favorites_path(@post), method: :post do %>
+                            <i class="fa-regular fa-heart" style="color: #9D9D9D;"></i>
+                        <% end %>
+                    <% end %>
+                    <p><%= @post.favorites.count %>いいね</p>
+                </div>
+                <div class="about-comment">
+                    <i class="fa-regular fa-comment" style="color: #9D9D9D;"></i>
+                    <p><%= @post.comments.count %>コメント</p>
+                </div>
+            </div>
+
+            <% if @post.user == current_user %>
+                <div class="trush-box">
+                    <%= link_to  post_path(@post), method: :delete, data: {confirm: "このポストを削除してもよろしいですか？"} do %>
+                        <i class="fa-regular fa-trash-can" style="color: #9d9d9d;"></i>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+        <div class="comment-index">
+            <%# もしコメントがある場合、eachでコメントを繰り返す %>
+            <% if @post.comments.present? %>
+                <% @post.comments.each do |comment| %>
+                    <div class="comment-user">
+                        <h5>↪︎<%= comment.user.name %></h5>
+                        <%# ここに後ほどコメント削除のアイコンをおく %>
+                    </div>
+                    <p><%= comment.comment %></p>
+                    <span></span>
                 <% end %>
             <% end %>
-            <%= @post.favorites.count %>いいね
         </div>
-        <div class="about-comment">
-            <p>○ 99コメント</p>
-        </div>
-        <% if @post.user == current_user %>
-            <div class="trush-box">
-                <%= link_to  post_path(@post), method: :delete, data: {confirm: "このポストを削除してもよろしいですか？"} do %>
-                    <i class="fa-regular fa-trash-can" style="color: #9d9d9d;"></i>
-                <% end %>
-            </div>
-        <% end %>
-    </div>
-    <div class="comment-index">
-        <%# もしコメントがある場合、eachでコメントを繰り返す %>
         <div class="relode-btn">
             <i class="fa-solid fa-circle-plus" style="color: #f7cbe8;"></i>
         </div>
     </div>
 </div>
+<%# モーダルの表示 %>
+<div class="modal">
+    <div class="modal-contents">
+        <div class="modal-for-user">
+            <h4><%= @post.user.name %>さんにコメント</h4>
+            <i class="fa-solid fa-xmark close-btn" style="color: #F09BDD;" class="modalcomment-close"></i>
+        </div>
+        <div class="modal-inner-comment">
+            <%= form_with model: [@post, @comment] do |f| %>
+            <div class="comment-form">
+                <%= image_tag current_user.get_profile_image(20, 20) %>
+                    <%= f.text_area :comment, rows: '5', placeholder: "コメントを記入", class: "comment-area" %>
+            </div>
+        </div>
+            <div class="cmt-submit">
+                <%= f.submit "コメントする", class: 'cmt-btn' %>
+            <% end %>
+            </div>
+    </div>
+</div>
+<div class="mask-comment"></div>
+<%# <script>
+    // let modalClick = document.querySelector(".comment-input");
+    // let modal = document.querySelector(".modal");
+    // let modalClose = document.querySelector(".modalcomment-close");
+    // let mask = document.querySelector(".mask-comment");
+
+    // modalClick.addEventListener('click', function(){
+    //     modal.classList.add('open');
+    //     mask.classList.add('open');
+    // });
+
+    // modalClose.addEventListener('click', () => {
+    //     modal.classList.remove('open');
+    // });
+    // mask.addEventListener('click', () => {
+    //     modal.classList.remove('open');
+    // });
+</script> %>
