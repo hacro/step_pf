@@ -3,6 +3,7 @@ class Post < ApplicationRecord
     belongs_to :user
     belongs_to :spot_type
     has_many :favorites, dependent: :destroy
+    has_many :comments, dependent: :destroy
 
     validates :location, presence: true
 

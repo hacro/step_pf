@@ -38,15 +38,16 @@
                         <% end %>
                         <%= post.favorites.count %>いいね
                     </div>
-
-                    <div class="post-item">
-                        <% if post.image.present? %>
-                            <%= image_tag post.image, :size => '542x230' %>
-                        <% end %>
-                        <%= post.spot_type.type_name %>
-                        <%= post.caption %>
-                        <%= post.location %>
-                    </div>
+                    <%= link_to post_path(post) do %>
+                        <div class="post-item">
+                            <% if post.image.present? %>
+                                <%= image_tag post.image, :size => '542x230' %>
+                            <% end %>
+                            <%= post.spot_type.type_name %>
+                            <%= post.caption %>
+                            <%= post.location %>
+                        </div>
+                    <% end %>
                 <% end %>
             <% end %>
             <%= paginate @posts %>
