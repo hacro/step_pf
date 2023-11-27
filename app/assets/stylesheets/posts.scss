@@ -127,25 +127,11 @@ body{
                         margin-left: 30px;
                         cursor: pointer;
                         z-index: 1;
-                        // .comment-input{
-                        // }
                     }
                     p{
                         color: $pGray;
                         font-weight: bold;
                     }
-                }
-                
-                .mask-comment{
-                    display: block;
-                    background-color: rgba(0,0,0, .2);
-                    width: 100%;
-                    height: 100%;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    z-index: -1;
-                    visibility: hidden;
                 }
             }
             .comment-index{
@@ -153,12 +139,29 @@ body{
                 background-color: $cWhite;
                 width: 100%;
                 text-align: start;
-                .comment-user{
-                    padding-left: 10%;
-                    font-size: 24px;
-                    h5{
-                        margin-bottom: 20px;
+                .comment-head{
+                    display: flex;
+                    width: 80%;
+                    margin: 0 auto;
+                    justify-content: space-between;
+                    align-items: center;
+                    .comment-user{
+                        display: flex;
+                        font-size: 24px;
+                        align-items: center;
+                        img{
+                            width: 60px;
+                            height: 60px;
+                        }
+                        h5{
+                            margin-bottom: 20px;
+                        }
                     }
+                    i{
+                        font-size: 36px;
+                        color: $titleGray;
+                    }
+
                 }
                 p{
                     padding-left: 10%;
@@ -253,5 +256,15 @@ body{
             }
         }
     }
-
+}
+.mask-comment{
+    display: block;
+    background-color: rgba(0,0,0, .2);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    visibility: hidden;
 }
