@@ -8,6 +8,13 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  # フォローしているユーザーのuser_id
+  has_many :relationships, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
+  # フォロワーのuser_id
+  has_many :reverse_of_relationships, class_name: "Follow", foreign_key: "followed_id", dependent: :destroy
+  # フォローしているユーザーとフォロワーの表示をするための記述↓
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
 
   def active_for_authentication?
     super && (is_withdrawal == false)
@@ -24,6 +31,21 @@ class User < ApplicationRecord
   def already_favorited?(post)
     self.favorites.exists?(post_id: post.id)
   end
+
+  # フォローした時の処理
+  def follow(user)
+    self.relationships.create(followed_id: user.id)
+
+  end
+  # フォローを外す時の処理
+  def  unfollow(user_id)
+    relationships.find_by(follower_id: user_id).destroy
+  end
+  # フォローしているかの判定
+  def following?(user)
+    followings.include?(user)
+  end
+  
 
 
   validates :name, presence: true, length: { minimum: 2 }
