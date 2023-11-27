@@ -10,7 +10,7 @@ class Post < ApplicationRecord
     def get_image(width,height)
         image.variant(resize_to_limit: [width, height])
     end
-    def favorited_by(user)
-        favorites.exsits?(user_id: user.id)
+    def favorited_by?(user)
+        favorites.exists?(user_id: user.id)
     end
 end
