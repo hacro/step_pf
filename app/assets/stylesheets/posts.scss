@@ -111,15 +111,16 @@ body{
                     border-top: solid 2px $lineGray;
                     border-bottom: solid 2px $lineGray;
                     .about-favo{
-                        #favorite-btn{
-
-                            display: flex;
-                            align-items: center;
-                            margin-left: 10%;
+                        margin: auto 0 auto 10%;
                             a{
-                                font-size: 36px;
+                                font-size: 24px;
+                                text-decoration: none;
+                                color: $pGray;
                             }
-                        }
+                            span{
+                                display: inline-block;
+                                font-weight: bold;
+                            }
                     }
                     .about-comment{
                         display: flex;
