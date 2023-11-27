@@ -73,16 +73,9 @@
         <div class="favo-comment">
             <div class="fc-count">
                 <div class="about-favo">
-                    <% if current_user.already_favorited?(@post) %>
-                        <%= link_to post_favorites_path(@post), method: :delete do %>
-                            <i class="fa-solid fa-heart" style="color: #F94646;"></i>
-                        <% end %>
-                    <% else %>
-                        <%= link_to post_favorites_path(@post), method: :post do %>
-                            <i class="fa-regular fa-heart" style="color: #9D9D9D;"></i>
-                        <% end %>
-                    <% end %>
-                    <p><%= @post.favorites.count %>いいね</p>
+                    <div id="favorite-btn-<%= @post.id %>">
+                        <%= render "favorites/favorite", post: @post %>
+                    </div>
                 </div>
                 <div class="about-comment">
                     <i class="fa-regular fa-comment" style="color: #9D9D9D;"></i>

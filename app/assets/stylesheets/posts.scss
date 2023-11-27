@@ -1,16 +1,17 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-// @use "/app/assets/stylesheets/color" as *;
+@import "color";
+
 body{
     width: 100%;
     margin: 0;
     font-family:'Mochiy+Pop+P+One','serif';
-    background-color: #F7CBE8;
+    background-color: $cPink;
     .container{
         text-align: center;
         h1{
-            color: white;
+            color: $cWhite;
             text-align: center;
             padding-top: 50px;
             font-size: 48px;
@@ -29,7 +30,7 @@ body{
                 display: block;
                 width: 100%;
                 margin: 0 auto;
-                background-color: white;
+                background-color: $cWhite;
                 text-align: start;
                 border-radius: 30px 30px 0 0;
                 .user-info{
@@ -43,7 +44,7 @@ body{
                             text-decoration: none;
                             font-size: 32px;
                             font-weight: bold;
-                            color: black;
+                            color: $cBlack;
                         }
                     }
                     .follow-btn{
@@ -52,8 +53,8 @@ body{
                             width: 190px;
                             height: 50px;
                             border-radius: 50px;
-                            background-color: #F09BDD;
-                            color: white;
+                            background-color: $cvPink;
+                            color: $cWhite;
                             font-size: 20px;
                             border: none;
                             font-weight: bold;
@@ -70,7 +71,7 @@ body{
                 .post-detail{
                     width: 80%;
                     margin: 0 auto;
-                    color: #686868;
+                    color: $pGray;
                     padding-bottom: 50px;
                     img{
                         display: block;
@@ -80,7 +81,7 @@ body{
                         border-radius: 30px;
                     }
                     p.spot-type-name{
-                        color: #F09BDD;
+                        color: $cvPink;
                         font-size: 28px;
                     }
                     h3{
@@ -105,14 +106,20 @@ body{
                     width: 100%;
                     height: 60px;
                     margin: 0 auto;
-                    background-color: white;
+                    background-color: $cWhite;
                     font-size: 24px;
-                    border-top: solid 2px #C4BDBD;
-                    border-bottom: solid 2px #C4BDBD;
+                    border-top: solid 2px $lineGray;
+                    border-bottom: solid 2px $lineGray;
                     .about-favo{
-                        display: flex;
-                        align-items: center;
-                        margin-left: 10%;
+                        #favorite-btn{
+
+                            display: flex;
+                            align-items: center;
+                            margin-left: 10%;
+                            a{
+                                font-size: 36px;
+                            }
+                        }
                     }
                     .about-comment{
                         display: flex;
@@ -124,7 +131,7 @@ body{
                         // }
                     }
                     p{
-                        color: #686868;
+                        color: $pGray;
                         font-weight: bold;
                     }
                 }
@@ -143,7 +150,7 @@ body{
             }
             .comment-index{
                 display: inline-block;
-                background-color: white;
+                background-color: $cWhite;
                 width: 100%;
                 text-align: start;
                 .comment-user{
@@ -160,11 +167,11 @@ body{
                 span{
                     display: block;
                     width: 100%;
-                    border-top: solid 2px #C4BDBD;
+                    border-top: solid 2px $lineGray;
                 }
             }
             .relode-btn{
-                background-color: white;
+                background-color: $cWhite;
                 border-radius: 0 0 30px 30px;
                 padding: 20px 0;
                 margin-bottom: 300px;
@@ -189,7 +196,7 @@ body{
         margin-left: auto;
         width: 40%;
         height: 450px;
-        background-color: white;
+        background-color: $cWhite;
         min-width: 500px;
         .modal-for-user{
             display: flex;
@@ -197,10 +204,10 @@ body{
             margin: 10px;
             h4{
                 font-size: 21px;
-                color: #6C6C6C;
+                color: $titleGray;
             }
             i{
-                color: #F09BDD;
+                color: $cvPink;
                 font-size: 36px;
                 margin-right: 20px;
                 cursor: pointer;
@@ -208,8 +215,8 @@ body{
             }
         }
         .modal-inner-comment{
-            border-top: solid 2px #C4BDBD;
-            border-bottom: solid 2px #C4BDBD;
+            border-top: solid 2px $lineGray;
+            border-bottom: solid 2px $lineGray;
             width: 80%;
             height: 40%;
             margin: 0 auto;
@@ -235,8 +242,8 @@ body{
                 width: 190px;
                 height: 50px;
                 border-radius: 50px;
-                background-color: #F09BDD;
-                color: white;
+                background-color: $cvPink;
+                color: $cWhite;
                 font-size: 18px;
                 border: none;
                 font-weight: bold;
