@@ -12,12 +12,8 @@
                 </div>
                 <%# ログインユーザーがフォローしているかどうかのif文 一旦ログインユーザーでなければ表示させるようにしている状態%>
                 <% if @post.user != current_user %>
-                    <div class="follow-btn">
-                        <% if current_user.following?(@post.user) %>
-                            <%= link_to  "フォロー中", user_follows_path(@post.user), method: :delete %>
-                        <% else %>
-                            <%= link_to "フォロー", user_follows_path(@post.user), method: :post %>
-                        <% end %>
+                    <div id="follow-btn-<%= @post.user_id%>">
+                        <%= render "follows/follow", user: @post.user %>
                     </div>
                 <% end %>
             </div>
