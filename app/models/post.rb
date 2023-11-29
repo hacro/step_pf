@@ -13,4 +13,12 @@ class Post < ApplicationRecord
     def favorited_by?(user)
         favorites.exists?(user_id: user.id)
     end
+
+    def self.search(search)
+        if search != ""
+            Post.where('location LIKE(?)', "%#{search}%")
+        else
+            Post.includes(:user)
+        end
+    end
 end

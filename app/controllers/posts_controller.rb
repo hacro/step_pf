@@ -12,7 +12,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page])
-
+  end
+  def search
+    # binding.pry
+    search_word = params[:keyword]
+    @posts = Post.where('location LIKE?', "%#{search_word}%")
   end
 
   def show

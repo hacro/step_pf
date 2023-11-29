@@ -1,28 +1,35 @@
-<h1>みんなの投稿</h1>
+<div class="searching-form">
+    <%= form_with url: search_posts_path, local: false, method: :get do |f| %>
+        <%= f.text_field :keyword, placeholder: "地域の投稿を検索する" %>
+        <%= f.submit "検索" %>
+    <% end %>
+</div>
 
-<% @posts.each do |post| %>
-    <%= link_to user_path(post.user_id) do %>
-        <div class="user-name">
-        <%# ここにユーザーのプロフ画像 %>
-            <%= image_tag post.user.get_profile_image(100, 100) %>
-            <%= post.user.name %>
+<h1>みんなの投稿</h1>
+<div id="post-lists">
+    <% @posts.each do |post| %>
+        <%= link_to user_path(post.user_id) do %>
+            <div class="user-name">
+                <%= image_tag post.user.get_profile_image(100, 100) %>
+                <%= post.user.name %>
+            </div>
+        <% end %>
+        <div id="favorite-btn-<%= post.id %>">
+            <%= render "favorites/favorite", post: post %>
         </div>
+        <% if post.user != current_user %>
+            <button>フォロー</button>
+        <% end %>
+        <%= link_to post_path(post) do %>
+            <div class="post-item">
+                <% if post.image.present? %>
+                    <%= image_tag post.image, :size => '542x230' %>
+                <% end %>
+                <%= post.spot_type.type_name %>
+                <%= post.caption %>
+                <%= post.location %>
+            </div>
+        <% end %>
     <% end %>
-    <div id="favorite-btn-<%= post.id %>">
-        <%= render "favorites/favorite", post: post %>
-    </div>
-    <% if post.user != current_user %>
-        <button>フォロー</button>
-    <% end %>
-    <%= link_to post_path(post) do %>
-        <div class="post-item">
-            <% if post.image.present? %>
-                <%= image_tag post.image, :size => '542x230' %>
-            <% end %>
-            <%= post.spot_type.type_name %>
-            <%= post.caption %>
-            <%= post.location %>
-        </div>
-    <% end %>
-<% end %>
+</div>
 <%= paginate @posts %>
