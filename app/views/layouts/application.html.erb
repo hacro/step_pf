@@ -9,25 +9,27 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= yield :css %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header style="background-color: #F7CBE8" >
+    <header>
       <% if user_signed_in? %>
         <li>
           <%= link_to posts_path do %>
-            <i class="fa-solid fa-house" style="color: #ffffff;" ></i>
+            <i class="fa-solid fa-house"></i>
             <% end %>
         </li>
         <li>
           <%= link_to new_post_path do %>
-            <i class="fa-solid fa-square-plus" style="color: #ffffff;"></i>
+            <i class="fa-solid fa-square-plus"></i>
           <% end %>
         </li>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;" ></i>
+            <i class="fa-solid fa-right-from-bracket"></i>
           <% end %>
         </li>
       <% end %>
