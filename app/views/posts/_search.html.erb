@@ -4,30 +4,36 @@
 
 <%# 同期通信の場合のコード %>
 
-<% @posts.each do |post| %>
-    <%= link_to user_path(post.user_id) do %>
-        <div class="user-name">
-        <%# ここにユーザーのプロフ画像 %>
-            <%= image_tag post.user.get_profile_image(100, 100) %>
-            <%= post.user.name %>
-        </div>
-    <% end %>
-    <div id="favorite-btn-<%= post.id %>">
-        <%= render "favorites/favorite", post: post %>
+
+ <div id="post-lists">
+        <% @posts.each do |post| %>
+            <div class="post-content">
+                <%= link_to user_path(post.user_id) do %>
+                    <div class="post-head">
+                        <div class="user-name">
+                            <%= image_tag post.user.get_profile_image(100, 100) %>
+                            <%= post.user.name %>
+                        </div>
+                    <% end %>
+                    <div id="favorite-btn-<%= post.id %>">
+                        <%= render "favorites/favorite", post: post %>
+                    </div>
+                    <% if post.user != current_user %>
+                        <button>フォロー</button>
+                    <% end %>
+                    </div>
+                <%= link_to post_path(post) do %>
+                    <div class="post-item">
+                        <% if post.image.present? %>
+                            <%= image_tag post.image, :size => '542x230' %>
+                        <% end %>
+                        <%= post.spot_type.type_name %>
+                        <%= post.caption %>
+                        <%= post.location %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
     </div>
-    <% if post.user != current_user %>
-        <button>フォロー</button>
-    <% end %>
-    <%= link_to post_path(post) do %>
-        <div class="post-item">
-            <% if post.image.present? %>
-                <%= image_tag post.image, :size => '542x230' %>
-            <% end %>
-            <%= post.spot_type.type_name %>
-            <%= post.caption %>
-            <%= post.location %>
-        </div>
-    <% end %>
-<% end %>
 
 

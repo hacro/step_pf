@@ -11,6 +11,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w( 
-    posts.css
-    )
+Rails.application.config.assets.precompile += [lambda do |filename, path|
+    path.start_with?(Rails.root.join('app', 'assets').to_s) &&
+        %w(.js .css).include?(File.extname(filename)) &&
+        !File.basename(filename).start_with?('_')
+  end]

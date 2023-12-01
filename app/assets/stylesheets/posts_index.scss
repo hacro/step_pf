@@ -1,0 +1,131 @@
+@import 'color';
+
+.container{
+    h1{
+        color: $cWhite;
+        font-size: 48px;
+    }
+    .searching-form{
+        width: 50%;
+        margin: 0 auto 100px;
+        border-bottom: solid 3px $cWhite;
+        padding-bottom: 50px;
+        form{
+            height: 50px;
+            .input-text{
+                width: 50%;
+                height: 90%;
+                font-size: 16px;
+                border-radius: 10px;
+                border: none;
+                padding-left: 10px;
+            }
+            .search-submit{
+                color: white;
+                background: $cvPink;
+                width: 15%;
+                height: 80%;
+                font-size: 16px;
+                font-weight: bold;
+                border: none;
+                box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), inset 0px -3px 6px -2px rgba(0, 0, 0, 0.3);
+                border-radius: 10px;
+                transition: all .3s ease;
+                &:hover{
+                    box-shadow: none;
+                    transform: translateY(-2px),translateZ(-2px);
+                    background-color: $cWhite;
+                    color: $cvPink;
+                    transition: all .3s ease;
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+    #post-lists{
+        margin-top: 50px;
+        .post-content{
+            width: 50%;
+            background-color: $cWhite;
+            margin: 0 auto 60px;
+            border-radius: 20px;
+            padding: 30px;
+            a{
+                text-decoration: none;
+            }
+            .post-head{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                text-align: center;
+                a{
+                    text-decoration: none;
+                    font-size: 16px;
+                    color: $cBlack;
+                    font-weight: bold;
+                    .user-name{
+                        display: flex;
+                        align-items: center;
+                        padding-left: 10px;
+                        img{
+                            width: 55px;
+                            height: 55px;
+                            border-radius: 50px;
+                            border: solid 1px $lineGray;
+                            margin-right: 15px;
+                        }
+                    }
+                }
+                .favorite-btn{
+                    display: flex;
+                    align-items: center;
+                    a{
+                        display: flex;
+                    }
+                }
+            }
+            .post-item{
+                img{
+                    display: block;
+                    width: 80%;
+                    height: auto;
+                    margin: 0 auto;
+                }
+                .post-detail{
+                    width: 80%;
+                    margin: 20px auto 0;
+                    text-align: start;
+                    color: $cBlack;
+                    font-size: 16px;
+                    span{
+                        display: inline-block;
+                        padding-bottom: 10px;
+                        &:first-child{
+                            color: $cvPink;
+                            font-weight: bold;
+                            font-size: 18px;
+                            padding-bottom: 15px;
+                        }
+                        h5{
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pagination{
+        width: 80%;
+        margin: 100px auto 300px;
+        span{
+            color: $cWhite;
+            font-size: 24px;
+            a{
+                text-decoration: none;
+            }
+        }
+    }
+
+
+}

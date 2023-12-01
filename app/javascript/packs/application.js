@@ -21,6 +21,7 @@ ActiveStorage.start()
 $(function(){
     $('.about-comment').on('click', () => {
         $('.modal').css('display','flex');
+        console.log("aaa");
     });
     $('.close-btn').on('click', () => {
         $('.modal').css('display','none');
