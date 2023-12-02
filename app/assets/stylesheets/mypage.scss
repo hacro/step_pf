@@ -1,0 +1,125 @@
+@import 'color';
+
+.mypage-contents{
+    width: 80%;
+    margin: 100px auto;
+    h1{
+        display: inline-block;
+        position: relative;
+        color: $cWhite;
+        font-size: 42px;
+        width: 30%;
+        border-bottom: solid 3px $cWhite;
+        margin: 0 auto 100px;
+        padding-bottom: 10px;
+    }
+    h2{
+        color: $cWhite;
+        font-size: 34px;
+    }
+    .circle-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $cWhite;
+        margin-bottom: 50px;
+        a{
+            cursor: pointer;
+            text-decoration: none;
+            color: $cWhite;
+            cursor: pointer;
+            &:hover{
+                cursor: pointer;
+                opacity: 0.65;
+            }
+            i{
+                display: flex;
+                width: 80px;
+                height: 80px;
+                margin: 0 auto;
+                font-size: 28px;
+                background: $circleWhite;
+                border-radius: 50%;
+                justify-content: center;
+                align-items: center;
+            }
+
+        }
+        .new-post{
+            width: 15%;
+        }
+        .user-prof-image{
+            width: 50%;
+            img{
+                width: 50%;
+                border-radius: 50%;
+                border: solid 1px $lineGray;
+            }
+        }
+        .prof-edit{
+            width: 15%;
+        }
+    }
+    p{
+        width: 80%;
+        margin: 0 auto 120px;
+        color: white;
+        font-size: 21px;
+        font-weight: bold;
+    }
+    .select-btn{
+        display: flex;
+        width: 70%;
+        justify-content: space-between;
+        margin: 0 auto 200px;
+        a{
+            display: inline-block;
+            width: 20%;
+            color: $cWhite;
+            text-decoration: none;
+            cursor: pointer;
+            &:hover{
+                cursor: pointer;
+                opacity: 0.65;
+            }
+        }
+        span{
+            display: flex;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            font-size: 28px;
+            background: $circleWhite;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+
+        }
+    }
+    .unsubscribe-btn{
+        display: flex;
+        width: 190px;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        margin: 0 auto;
+        background-color: $cvPink;
+        color: $cWhite;
+        font-size: 20px;
+        border: none;
+        font-weight: bold;
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), inset 0px -3px 6px -2px rgba(0, 0, 0, 0.3);
+        transition: all .3s ease;
+        text-align: center;
+        text-decoration: none;
+        &:hover{
+            box-shadow: none;
+            background-color: $cWhite;
+            color: $cvPink;
+            transition: all .3s ease;
+            transform: translateY(-2px),translateZ(-2px);
+            cursor: pointer;
+        }
+    }
+}

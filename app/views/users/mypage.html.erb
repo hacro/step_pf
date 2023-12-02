@@ -1,29 +1,45 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'mypage' %>
+<% end %>
 
-<div class="container">
+<div class="mypage-contents">
     <h1>マイページ</h1>
+    <span></span>
     <h2><%= @user.name %></h2>
-    <div class="circle-btn" style="background-color: #F7CBE8;">
-        <span>
-            <i class="fa-regular fa-comment" style="color: #ffffff;"></i>
+    <div class="circle-btn">
+        <span class="new-post" >
+            <%= link_to  new_post_path do %>
+                <i class="fa-regular fa-comment"></i>
+                <h5>新規投稿</h5>
+            <% end %>
         </span>
-            <h4>新規投稿</h4>
-        <span>
-            <%= image_tag @user.get_profile_image(352, 352) %>
+        <span class="user-prof-image" >
+            <%= image_tag @user.get_profile_image(100, 100) %>
         </span>
-        <span>
-            <i class="fa-solid fa-gear" style="color: #ffffff;"></i>
+        <span class="prof-edit" >
+            <%= link_to edit_user_path(current_user) do %>
+                <i class="fa-solid fa-gear"></i>
+                <h5>プロフィール編集</h5>
+            <% end %>
         </span>
-            <h4>プロフィール編集</h4>
-        <p><%= @user.introduction %></p>
     </div>
-    <div class="index-btn" style="background-color: #F7CBE8;">
-        <span><i class="fa-regular fa-newspaper" style="color: #ffffff;"></i></span>
-        <h4>ポスト一覧</h4>
-        <span><i class="fa-solid fa-heart" style="color: #ffffff;"></i></span>
-        <h4>いいね一覧</h4>
-        <span><i class="fa-solid fa-users" style="color: #ffffff;"></i></span>
-        <h4>フォロー/フォロワー</h4>
+        <p><%= @user.introduction %></p>
+    <div class="select-btn">
+        <%= link_to posts_path do %>
+            <span><i class="fa-regular fa-newspaper"></i></span>
+            <h5>ポスト一覧</h5>
+        <% end %>
+        <%# いいね一覧のPATHに変更 %>
+        <%= link_to posts_path do %>
+            <span><i class="fa-solid fa-heart"></i></span>
+            <h5>いいね一覧</h5>
+        <% end %>
+        <%# フォローフォロワー一覧のページPATHに変更 %>
+        <%= link_to posts_path do %>
+            <span><i class="fa-solid fa-users"></i></span>
+            <h5>フォロー/フォロワー</h5>
+        <% end %>
     </div>
 
-    <button><%= link_to "退会", unsubscribe_path(@user) %></button>
+    <%= link_to "退会", unsubscribe_path(@user), class: "unsubscribe-btn" %>
 </div>

@@ -76,6 +76,9 @@
                             }
                             &:hover{
                                 box-shadow: none;
+                                background-color: $cWhite;
+                                color: $cvPink;
+                                transition: all .3s ease;
                                 transform: translateY(-2px),translateZ(-2px);
                                 cursor: pointer;
                             }
