@@ -2,8 +2,8 @@
     <%= stylesheet_link_tag 'posts_show' %>
 <% end %>
 
-<div class="container">
-    <h1>ポスト</h1>
+<div class="post-show-container">
+    <h2>ポスト</h2>
     <div class="contents-all">
         <div class="post-show">
             <div class="user-info">
@@ -17,6 +17,12 @@
                 <% if @post.user != current_user %>
                     <div id="follow-btn-<%= @post.user_id%>" class="follow-btn">
                         <%= render "follows/follow", user: @post.user %>
+                    </div>
+                <% else %>
+                    <div class="post-edit-icon">
+                        <%= link_to edit_post_path(@post) do %>
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        <% end %>
                     </div>
                 <% end %>
             </div>

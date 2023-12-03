@@ -1,8 +1,5 @@
 @import 'color'; 
 
-.container{
-    color: $cWhite;
-
     h1{
         color: white;
         font-size: 48px;
@@ -15,6 +12,7 @@
         h3{
             display: flex;
             font-size: 26px;
+            color: $cWhite;
         }
         .radio-btn{
             display: flex;
@@ -34,6 +32,9 @@
                 border: none;
                 font-size: 16px;
                 padding: 10px;
+            }
+            ::placeholder{
+                color: $placeholder;
             }
         }
         .location-registration{
@@ -84,6 +85,9 @@
                     font-size: 16px;
                     padding: 10px;
                 }
+                ::placeholder{
+                    color: $placeholder;
+                }
             }
             #g-map-search{
                 height: 400px;
@@ -121,4 +125,3 @@
             cursor: pointer;
         }
     }
-}
