@@ -20,12 +20,12 @@ class User < ApplicationRecord
     super && (is_withdrawal == false)
   end
 
-  def get_profile_image(width, height)
+  def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_fill: [width, height])
+      profile_image
   end
 
   def already_favorited?(post)
@@ -39,8 +39,6 @@ class User < ApplicationRecord
   end
   # フォローを外す時の処理
   def  unfollow(user_id)
-    
-    # binding.pry
     self.relationships.find_by(followed_id: user_id).destroy
   end
   # フォローしているかの判定

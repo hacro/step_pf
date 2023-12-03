@@ -1,34 +1,39 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'post_edit' %>
+<% end %>
 
-<div class="container">
     <h1>ポスト編集</h1>
 
-<%=  form_with model: @post, ulr: post_path(@post), method: :patch do |f| %>
-    <h3>休憩スポット or 遊び場</h3>
-    <div class="radio-btn">
-        <%= f.radio_button :spot_type_id, 1%>
-        <%= f.label :spot_type_id_1, "休憩スポット" %>
-        <%= f.radio_button :spot_type_id, 2%>
-        <%= f.label :spot_type_id_2, "遊び場" %>
-    </div>
-    <h3>説明（200文字以上）</h3>
-    <div class="field">
-        <%= f.text_area :caption %>
-    </div>
-
-    <h3>この施設があるところ</h3>
-        <input id="address" type="text" value="" >
-        <input type="button" value="search" onclick=codeAddress()>
-        <div id="addressOnDisplay">
-            <%= f.text_area :location, placeholder: "ここに住所が入る" %>
+<div class="post-edit-contents">
+    <%=  form_with model: @post, ulr: post_path(@post), method: :patch do |f| %>
+        <h3>休憩スポット　or　遊び場</h3>
+        <div class="radio-btn">
+            <div class="rest-type">
+                <%= f.radio_button :spot_type_id, 1%>
+                <%= f.label :spot_type_id_1, "休憩スポット" %>
+            </div>
+            <div class="play-type">
+                <%= f.radio_button :spot_type_id, 2%>
+                <%= f.label :spot_type_id_2, "遊び場" %>
+            </div>
         </div>
-        <div id="g-map-search"></div>
-<%# 以下は別ファイル（CSSとJS）に後ほど記載 %>
-        <style>
-            #g-map-search{
-                height: 400px;
-                width: 600px;
-            }
-        </style>
+        <h3>説明（200文字以上）</h3>
+        <div class="field">
+            <%= f.text_area :caption %>
+        </div>
+
+        <h3>この施設があるところ</h3>
+        <div class="location-registration">
+            <div class="search-input">
+                    <input id="address" type="text" value="" class="text-area" >
+                    <input type="button" value="search", class="search-btn", onclick=codeAddress()>
+            </div>
+            <div id="addressOnDisplay", class="address-area" >
+                <%= f.text_area :location %>
+            </div>
+            <div id="g-map-search"></div>
+        </div>
+        <%# 以下は別ファイル（CSSとJS）に後ほど記載 %>
         <script>
             const addressOnDisplay = document.getElementById('post_location');
 
@@ -76,18 +81,18 @@
         <script src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyBkjessssoTOBm-duqZdsVGwbgexFeJcMo&callback=initMap" async defer ></script>
 <%# ここまで %>
 
-    <h3>施設の詳細（施設の建物名や階数など）</h3>
-    <div class="field">
-        <%= f.text_area :spot_detail %>
-    </div>
-    <h3>その他（持ち物や注意するところ）</h3>
-    <div class="field">
-        <%= f.text_area :other_info %>
-    </div>
-    <h3>画像</h3>
-    <div class="field">
-        <%= f.file_field :image, accept: "image/*" %>
-    </div>
-    <%= f.submit "内容を変更する" %>
-<% end %>
+        <h3>施設の詳細（施設の建物名や階数など）</h3>
+        <div class="field">
+            <%= f.text_area :spot_detail, placeholder: "施設の詳細を記入する。" %>
+        </div>
+        <h3>その他（持ち物や注意するところ）</h3>
+        <div class="field">
+            <%= f.text_area :other_info %>
+        </div>
+        <h3>画像</h3>
+        <div class="image-field">
+            <%= f.file_field :image, accept: "image/*" %>
+        </div>
+        <%= f.submit "内容を変更する", class: "submit-btn" %>
+    <% end %>
 </div>

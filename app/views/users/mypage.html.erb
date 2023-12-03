@@ -14,7 +14,7 @@
             <% end %>
         </span>
         <span class="user-prof-image" >
-            <%= image_tag @user.get_profile_image(100, 100) %>
+            <%= image_tag @user.get_profile_image %>
         </span>
         <span class="prof-edit" >
             <%= link_to edit_user_path(current_user) do %>

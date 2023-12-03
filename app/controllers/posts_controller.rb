@@ -7,14 +7,13 @@ class PostsController < ApplicationController
     @post = Post.new(post_image_params)
     @post.user_id = current_user.id
     @post.save
-    redirect_to posts_path
+    redirect_to post_path(@post)
   end
 
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).order(created_at: :desc)
   end
   def search
-    # binding.pry
     search_word = params[:keyword]
     @posts = Post.where('location LIKE?', "%#{search_word}%")
   end
@@ -31,7 +30,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_image_params)
-      redirect_to posts_path
+      redirect_to post_path(@post)
     else
       render :edit
     end

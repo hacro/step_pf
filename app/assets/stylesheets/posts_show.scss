@@ -76,9 +76,6 @@
                             }
                             &:hover{
                                 box-shadow: none;
-                                background-color: $cWhite;
-                                color: $cvPink;
-                                transition: all .3s ease;
                                 transform: translateY(-2px),translateZ(-2px);
                                 cursor: pointer;
                             }
@@ -229,6 +226,8 @@
         width: 40%;
         height: 450px;
         background-color: $cWhite;
+        padding: 10px;
+        border-radius: 20px;
         min-width: 500px;
         .modal-for-user{
             display: flex;
@@ -252,8 +251,18 @@
             width: 80%;
             height: 40%;
             margin: 0 auto;
+            form{
+                height: 100%;
+            }
             .comment-form{
                 display: flex;
+                height: 100%;
+                img{
+                    width: 50px;
+                    height: 50px;
+                    margin-top: 5px;
+                    border-radius: 50px;
+                }
                 textarea{
                     resize: none;
                     width: 80%;

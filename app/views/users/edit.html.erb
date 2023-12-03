@@ -1,32 +1,37 @@
-<div class="container">
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'users_edit' %>
+<% end %>
+
+<div class="user-edit-contents">
     <h1>プロフィール編集</h1>
 
     <%= form_with model: @user do |f| %>
         <% if @user.errors.any? %>
-        <h2>
-            <%= @user.errors.count %> errors prohibited this user from being saved:
-        </h2>
-        <ul>
-            <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-        </ul>
-    <% end %>
-
-        <div class="form-group">
-            <label for="inputName">ユーザーネーム</label>
-            <%= f.text_field :name, autofocus: true, id:"inputName", placeholder: "名前" %>
-        </div>
-        <div class="form-group">
-            <label for="inputIntroduction">ひとこと自己紹介</label>
-            <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction" %>
-        </div>
-        <div class="form-group">
-            <label for="inputImage">アイコン</label>
-            <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
-        </div>
-        <div class="form-group">
-            <%= f.submit "編集する" %>
+            <h2>
+                <%= @user.errors.count %> errors prohibited this user from being saved:
+            </h2>
+            <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
+        <div class="edit-form">
+            <div class="form-group">
+                <label for="inputName">ユーザーネーム</label>
+                <%= f.text_field :name, autofocus: true, id:"inputName", placeholder: "名前" %>
+            </div>
+            <div class="form-group">
+                <label for="inputIntroduction">ひとこと自己紹介</label>
+                <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction" %>
+            </div>
+            <div class="form-group">
+                <label for="inputImage">アイコン</label>
+                <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+            </div>
+            <div class="form-submit">
+                <%= f.submit "編集する" %>
+            </div>
         </div>
     <% end %>
 </div>

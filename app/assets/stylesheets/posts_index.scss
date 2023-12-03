@@ -1,6 +1,6 @@
 @import 'color';
 
-.container{
+.index-container{
     h1{
         color: $cWhite;
         font-size: 48px;
@@ -45,6 +45,10 @@
     }
     #post-lists{
         margin-top: 50px;
+        h2{
+            color: $cWhite;
+            font-size: 32px;
+        }
         .post-content{
             width: 50%;
             background-color: $cWhite;

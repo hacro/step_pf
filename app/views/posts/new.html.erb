@@ -9,7 +9,7 @@
         <h3>休憩スポット or 遊び場</h3>
         <div class="radio-btn">
             <div class="rest-radio">
-                <%= f.radio_button :spot_type_id, 1%>
+                <%= f.radio_button :spot_type_id, 1, checked: true%>
                 <%= f.label :spot_type_id_1, "休憩スポット" %>
             </div>
             <div class="play-radio">
@@ -28,7 +28,7 @@
         <h3>この施設があるところ</h3>
         <div class="location-registration">
             <div class="search-input">
-                <input id="address" type="text" value="施設を検索", class="text-area" >
+                <input id="address" type="text" class="text-area" >
                 <input type="button" value="search", class="search-btn" onclick=codeAddress()>
             </div>
             <div id="addressOnDisplay", class="address-area" >
@@ -101,6 +101,6 @@
         <div class="image-field">
             <%= f.file_field :image, accept: "image/*" %>
         </div>
-</div>
     <%= f.submit "投稿する", class: "submit-btn" %>
 <% end %>
+</div>

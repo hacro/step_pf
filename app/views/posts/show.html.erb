@@ -9,7 +9,7 @@
             <div class="user-info">
                 <div class="about-user">
                     <%= link_to user_path(@post.user_id) do %>
-                        <%= image_tag @post.user.get_profile_image(50, 50) %>
+                        <%= image_tag @post.user.get_profile_image %>
                         <%= @post.user.name %>
                     <% end %>
                 </div>
@@ -94,7 +94,7 @@
                 <% @post.comments.each do |comment| %>
                     <div class="comment-head">
                         <div class="comment-user">
-                            <%= image_tag comment.user.get_profile_image(50, 50) %>
+                            <%= image_tag comment.user.get_profile_image %>
                             <h5>↪︎<%= comment.user.name %></h5>
                         </div>
                         <% if comment.user_id == current_user.id %>
@@ -127,7 +127,7 @@
         <div class="modal-inner-comment">
             <%= form_with model: [@post, @comment] do |f| %>
             <div class="comment-form">
-                <%= image_tag current_user.get_profile_image(20, 20) %>
+                <%= image_tag current_user.get_profile_image %>
                     <%= f.text_area :comment, rows: '5', placeholder: "コメントを記入", class: "comment-area" %>
             </div>
         </div>

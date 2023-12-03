@@ -1,54 +1,60 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'users_show' %>
+<% end %>
 
-<div class="container">
+<div class="user-show-container">
     <div class="user-show-user">
         <h2><%= @user.name %></h2>
-        <%= image_tag @user.get_profile_image(150,150) %>
+        <%= image_tag @user.get_profile_image %>
         <div class="about-user-count">
-            <%= @posts.count %>投稿
+            <span class="some-counts"><%= @posts.count %>投稿</span>
             <%# フォローしてる人数 %>
-            <p>フォロー中</p>
+            <span id="followings_count" class="some-counts">
+                <%= render "follows/followings_count", user: @user %>
+            </span>
             <%# フォローワー人数 %>
-            <p>フォロワー</p>
-            <% if @user.introduction.present?%>
-                <%= @user.introduction %>
-            <% end %>
+            <span id="followers_count" class="some-counts">
+                <%= render "follows/followers_count", user: @user %>
+            </span>
         </div>
+        <% if @user.introduction.present?%>
+            <p><%= @user.introduction %></p>
+        <% end %>
         <% if @user != current_user %>
-            <button>フォロー</button>
+            <div id="follow-btn-<%= @user.id%>" class="follow-btn">
+                <%= render "follows/follow", user: @user %>
+            </div>
         <% end %>
     </div>
     <div class="user-posts-index">
         <h1>投稿したポスト</h1>
         <% if @posts.present? %>
             <% @posts.each do |post| %>
-                <%= link_to post_path(post) do %>
-                    <div class="user-name">
-                        <%= image_tag @user.get_profile_image(100, 100) %>
-                        <%= @user.name %>
-                    </div>
-                    <div class="favorite_buttons">
-                        <% if current_user.already_favorited?(post) %>
-                            <%= link_to post_favorites_path(post), method: :delete do %>
-                                <i class="fa-solid fa-heart" style="color: #F94646;"></i>
-                            <% end %>
-                        <% else %>
-                            <%= link_to post_favorites_path(post), method: :post do %>
-                                <i class="fa-regular fa-heart" style="color: #F94646;"></i>
-                            <% end %>
-                        <% end %>
-                        <%= post.favorites.count %>いいね
-                    </div>
+                <div class="post-content">
                     <%= link_to post_path(post) do %>
-                        <div class="post-item">
-                            <% if post.image.present? %>
-                                <%= image_tag post.image, :size => '542x230' %>
-                            <% end %>
-                            <%= post.spot_type.type_name %>
-                            <%= post.caption %>
-                            <%= post.location %>
+                        <div class="post-head">
+                            <div class="user-name">
+                                <%= image_tag @user.get_profile_image %>
+                                <%= @user.name %>
+                            </div>
+                            <div id="favorite-btn-<%= post.id %>", class: "favorite-btn" >
+                                <%= render "favorites/favorite", post: post %>
+                            </div>
                         </div>
+                        <%= link_to post_path(post) do %>
+                            <div class="post-item">
+                                <% if post.image.present? %>
+                                    <%= image_tag post.image, :size => '542x230' %>
+                                <% end %>
+                                <div class="post-detail">
+                                    <span class="post-spot-type"><%= post.spot_type.type_name %></span></br>
+                                    <span class="post-caption"><h5>説明: </h5><%= post.caption %></span></br>
+                                    <span class="post-location"><h5>この施設の所在地: </h5><%= post.location %></span>
+                                </div>
+                            </div>
+                        <% end %>
                     <% end %>
-                <% end %>
+                </div>
             <% end %>
             <%= paginate @posts %>
         <% else %>

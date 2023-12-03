@@ -5,7 +5,6 @@
 
     h1{
         color: white;
-        border-bottom: solid 3px;
         font-size: 48px;
         width: 300px;
         margin: 0 auto;
@@ -22,7 +21,7 @@
             justify-content: space-around;
             font-size: 24px;
             font-weight: bold;
-            color: $pGray;
+            color: $titleGray;
         }
         .field{
             display: block;

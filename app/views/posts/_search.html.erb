@@ -11,7 +11,7 @@
                 <%= link_to user_path(post.user_id) do %>
                     <div class="post-head">
                         <div class="user-name">
-                            <%= image_tag post.user.get_profile_image(100, 100) %>
+                            <%= image_tag post.user.get_profile_image %>
                             <%= post.user.name %>
                         </div>
                     <% end %>
