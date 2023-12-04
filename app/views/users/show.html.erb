@@ -37,7 +37,7 @@
                                 <%= image_tag @user.get_profile_image %>
                                 <%= @user.name %>
                             </div>
-                            <div id="favorite-btn-<%= post.id %>", class: "favorite-btn" >
+                            <div id="favorite-btn-<%= post.id %>" >
                                 <%= render "favorites/favorite", post: post %>
                             </div>
                         </div>

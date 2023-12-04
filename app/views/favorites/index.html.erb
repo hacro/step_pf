@@ -3,29 +3,21 @@
 <% end %>
 
 <div class="index-container">
-    <div class="searching-form">
-        <h1>けんさく</h1>
-        <%= form_with url: search_posts_path, local: false, method: :get do |f| %>
-            <%= f.text_field :keyword, placeholder: "地域の投稿を検索する", class: "input-text"%>
-            <%= f.submit "検索", class: "search-submit" %>
-        <% end %>
-    </div>
-
-    <div id="post-lists">
-    <h2>みんなの投稿</h2>
-        <% @posts.each do |post| %>
+    <div class="favorites-contents">
+        <h2>いいねした投稿</h2>
+        <% @favorite_posts.each do |post| %>
             <div class="post-content">
                 <%= link_to user_path(post.user_id) do %>
-                <div class="post-head">
-                    <div class="user-name">
-                        <%= image_tag post.user.get_profile_image %>
-                        <span><%= post.user.name %></span>
-                    </div>
+                    <div class="post-head">
+                        <div class="user-name">
+                            <%= image_tag post.user.get_profile_image %>
+                            <span><%= post.user.name %></span>
+                        </div>
                 <% end %>
                     <div id="favorite-btn-<%= post.id %>" >
                         <%= render "favorites/favorite", post: post %>
                     </div>
-                </div>
+                    </div>
                 <%= link_to post_path(post) do %>
                     <div class="post-item">
                         <% if post.image.present? %>
@@ -41,5 +33,4 @@
             </div>
         <% end %>
     </div>
-    <%= paginate @posts %>
 </div>

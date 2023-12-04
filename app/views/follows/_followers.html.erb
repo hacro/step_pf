@@ -1,0 +1,32 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'follow_index' %>
+<% end %>
+
+<div class="followers-contents">
+    <div class="followers-index">
+        <% if followers.present? %>
+            <% followers.each do |follower| %>
+                <div class="user-header">
+                    <div class="about-user">
+                        <%= link_to user_path(follower) do %>
+                            <%= image_tag follower.get_profile_image, style: "width: 100px; height: 100px;"  %>
+                            <div class="name-introduction">
+                                <h3><%= follower.name %></h3>
+                                <% if follower.introduction.present? %>
+                                    <span><%= follower.introduction %></span>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                    <% if follower != current_user %>
+                        <div id="follow-btn-<%= follower.id%>" class="follow-btn">
+                            <%= render "follows/follow", user: follower %>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+        <% else %>
+            <h3>フォロワーはいません。</h3>
+        <% end %>
+    </div>
+</div>

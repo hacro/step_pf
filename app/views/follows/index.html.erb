@@ -1,0 +1,22 @@
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'follow_tab' %>
+<% end %>
+
+
+<ul class="tab-list">
+    <li class="follow-tab active">
+        フォロー
+    </li>
+    <li class="follower-tab">
+        フォロワー
+    </li>
+</ul>
+
+<div class="tabbox-contents">
+    <div class="follow-list box-show">
+        <%= render 'follows/followings', followings: @followings%>
+    </div>
+    <div class="follower-list">
+        <%= render 'follows/followers', followers: @followers %>
+    </div>
+</div>

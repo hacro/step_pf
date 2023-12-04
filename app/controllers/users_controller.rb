@@ -32,9 +32,14 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  # def favorited_posts
+  #   @favorited_posts = Post.favorited_posts(current_user)
+  # end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
+
 end

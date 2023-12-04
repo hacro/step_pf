@@ -35,7 +35,7 @@ body{
             border-bottom: solid 3px white;
             .logo{
                 color: $cWhite;
-                margin-left: 50px;
+                margin-left: 160px;
             }
             .nav-icon{
                 display: flex;
@@ -43,9 +43,11 @@ body{
                 list-style: none;
                 width: 40%;
                 display: flex;
-                justify-content: space-around;
+                justify-content: flex-end;
+                margin-right: 160px;
                 li{
-                    font-size: 28px;
+                    font-size: 34px;
+                    margin-right: 30px;
                     a{
                         color: $cWhite;
                     }

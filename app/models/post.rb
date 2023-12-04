@@ -21,4 +21,10 @@ class Post < ApplicationRecord
             Post.includes(:user)
         end
     end
+
+    def self.favorited_posts(user)
+        includes(:favorites)
+        where(favorites: {user_id: user.id})
+        order(created_at: :desc)
+    end
 end

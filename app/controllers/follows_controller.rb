@@ -12,6 +12,12 @@ class FollowsController < ApplicationController
     current_user.unfollow(params[:user_id])
   end
 
+  def index
+    @user = User.find(params[:user_id])
+    @followings = @user.followings
+    @followers = @user.followers
+  end
+
   # フォロー一覧
   def followings
     @user = User.find(params[:user_id])

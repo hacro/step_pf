@@ -13,4 +13,9 @@ class FavoritesController < ApplicationController
         @favorite.destroy
     end
 
+    def index
+        favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+        @favorite_posts = Post.find(favorites)
+    end
+
 end

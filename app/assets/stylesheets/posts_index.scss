@@ -43,11 +43,12 @@
         }
 
     }
-    #post-lists{
+    #post-lists, .favorites-contents{
         margin-top: 50px;
         h2{
             color: $cWhite;
             font-size: 32px;
+            margin-bottom: 50px;
         }
         .post-content{
             width: 50%;

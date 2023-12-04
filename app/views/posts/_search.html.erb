@@ -1,39 +1,35 @@
-<%# 非同期通信の場合のコード %>
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'posts_index' %>
+<% end %>
 
-
-
-<%# 同期通信の場合のコード %>
-
-
- <div id="post-lists">
-        <% @posts.each do |post| %>
-            <div class="post-content">
-                <%= link_to user_path(post.user_id) do %>
-                    <div class="post-head">
-                        <div class="user-name">
-                            <%= image_tag post.user.get_profile_image %>
-                            <%= post.user.name %>
-                        </div>
-                    <% end %>
-                    <div id="favorite-btn-<%= post.id %>">
-                        <%= render "favorites/favorite", post: post %>
-                    </div>
-                    <% if post.user != current_user %>
-                        <button>フォロー</button>
-                    <% end %>
-                    </div>
-                <%= link_to post_path(post) do %>
-                    <div class="post-item">
-                        <% if post.image.present? %>
-                            <%= image_tag post.image, :size => '542x230' %>
-                        <% end %>
-                        <%= post.spot_type.type_name %>
-                        <%= post.caption %>
-                        <%= post.location %>
+<div id="post-lists">
+    <% @posts.each do |post| %>
+        <div class="post-content">
+            <%= link_to user_path(post.user_id) do %>
+                <div class="post-head">
+                    <div class="user-name">
+                        <%= image_tag post.user.get_profile_image %>
+                        <span><%= post.user.name %></span>
                     </div>
                 <% end %>
+                <div id="favorite-btn-<%= post.id %>">
+                    <%= render "favorites/favorite", post: post %>
+                </div>
             </div>
-        <% end %>
-    </div>
+            <%= link_to post_path(post) do %>
+                <div class="post-item">
+                    <% if post.image.present? %>
+                        <%= image_tag post.image, :size => '542x230' %>
+                    <% end %>
+                    <div class="post-detail">
+                        <span class="post-spot-type"><%= post.spot_type.type_name %></span></br>
+                        <span class="post-caption"><h5>説明: </h5><%= post.caption %></span></br>
+                        <span class="post-location"><h5>この施設の所在地: </h5><%= post.location %></span>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+</div>
 
 

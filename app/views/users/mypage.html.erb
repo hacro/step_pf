@@ -25,17 +25,17 @@
     </div>
         <p><%= @user.introduction %></p>
     <div class="select-btn">
-        <%= link_to posts_path do %>
+        <%= link_to  user_path(current_user) do %>
             <span><i class="fa-regular fa-newspaper"></i></span>
             <h5>ポスト一覧</h5>
         <% end %>
         <%# いいね一覧のPATHに変更 %>
-        <%= link_to posts_path do %>
+        <%= link_to favorites_path do %>
             <span><i class="fa-solid fa-heart"></i></span>
             <h5>いいね一覧</h5>
         <% end %>
         <%# フォローフォロワー一覧のページPATHに変更 %>
-        <%= link_to posts_path do %>
+        <%= link_to user_follows_path(current_user) do %>
             <span><i class="fa-solid fa-users"></i></span>
             <h5>フォロー/フォロワー</h5>
         <% end %>

@@ -5,7 +5,6 @@
 // = require jquery
 // = require rails-ujs
 // = require activestorage
-// = require turbolinks
 // = require_tree .
 
 import Rails from "@rails/ujs"
@@ -29,5 +28,18 @@ $(function(){
     $('.modal').on('click', (e) => {
         if(e.target !== e.currentTarget) return;
         $('.modal').css('display','none');
+    });
+
+    $('.follower-tab').on('click',()=> {
+        $('.follow-tab').removeClass('active');
+        $('.follower-tab').addClass('active');
+        $('.follow-list').removeClass('box-show');
+        $('.follower-list').addClass('box-show');
+    });
+    $('.follow-tab').on('click',()=> {
+        $('.follow-tab').addClass('active');
+        $('.follower-tab').removeClass('active');
+        $('.follow-list').addClass('box-show');
+        $('.follower-list').removeClass('box-show');
     });
 });
