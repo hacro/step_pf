@@ -1,7 +1,7 @@
 <%# フォロー機能の部分テンプレート %>
 
 <% if current_user.following?(user) %>
-    <%=  link_to user_follows_path(user), method: :delete, remote: true do %>
+    <%=  link_to user_follow_path(user,user), method: :delete, remote: true do %>
         <span class="following">フォロー中</span>
     <% end %>
 <% else %>

@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
+
+  GOOGLE_API_KEY = ENV['GOOGLE_API_SECRET_KEY']
   def new
+    @google_api_key = GOOGLE_API_KEY
     @post = Post.new
   end
 
@@ -19,13 +22,14 @@ class PostsController < ApplicationController
   end
 
   def show
+    @google_api_key = GOOGLE_API_KEY
     @post = Post.find(params[:id])
     @comment = Comment.new
   end
 
   def edit
+    @google_api_key = GOOGLE_API_KEY
     @post = Post.find(params[:id])
-
   end
   def update
     @post = Post.find(params[:id])

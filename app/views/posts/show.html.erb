@@ -65,7 +65,7 @@
                         });
                     }
                 </script>
-                <script src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyBkjessssoTOBm-duqZdsVGwbgexFeJcMo&callback=initMap" async defer ></script>
+                <script src= "https://maps.googleapis.com/maps/api/js?key=<%= @google_api_key %>&callback=initMap" async defer ></script>
                 <h3>施設の詳細(施設の名前や階数など)</h3>
                 <p><%= @post.spot_detail %></p>
                 <h3>その他(持ち物や注意することなど)</h3>
