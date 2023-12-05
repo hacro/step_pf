@@ -31,7 +31,7 @@
         <% if @posts.present? %>
             <% @posts.each do |post| %>
                 <div class="post-content">
-                    <%= link_to post_path(post) do %>
+                    <%= link_to post_path(post), data: {"turbolinks" => false} do %>
                         <div class="post-head">
                             <div class="user-name">
                                 <%= image_tag @user.get_profile_image %>
@@ -41,7 +41,7 @@
                                 <%= render "favorites/favorite", post: post %>
                             </div>
                         </div>
-                        <%= link_to post_path(post) do %>
+                        <%= link_to post_path(post), data: {"turbolinks" => false} do %>
                             <div class="post-item">
                                 <% if post.image.present? %>
                                     <%= image_tag post.image, :size => '542x230' %>

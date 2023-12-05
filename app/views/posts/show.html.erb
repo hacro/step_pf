@@ -20,7 +20,7 @@
                     </div>
                 <% else %>
                     <div class="post-edit-icon">
-                        <%= link_to edit_post_path(@post) do %>
+                        <%= link_to edit_post_path(@post), data: {"turbolinks" => false} do %>
                             <i class="fa-solid fa-pen-to-square"></i>
                         <% end %>
                     </div>

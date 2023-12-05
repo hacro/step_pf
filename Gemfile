@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.4'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -60,3 +60,7 @@ gem 'devise'
 gem 'kaminari','~> 1.2.1'
 gem 'image_processing', '~> 1.2'
 gem 'dotenv-rails'
+
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"

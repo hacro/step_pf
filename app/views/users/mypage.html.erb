@@ -8,7 +8,7 @@
     <h2><%= @user.name %></h2>
     <div class="circle-btn">
         <span class="new-post" >
-            <%= link_to  new_post_path do %>
+            <%= link_to  new_post_path, data: {"turbolinks" => false} do %>
                 <i class="fa-regular fa-comment"></i>
                 <h5>新規投稿</h5>
             <% end %>
@@ -17,7 +17,7 @@
             <%= image_tag @user.get_profile_image %>
         </span>
         <span class="prof-edit" >
-            <%= link_to edit_user_path(current_user) do %>
+            <%= link_to edit_user_path(current_user), data: {"turbolinks" => false} do %>
                 <i class="fa-solid fa-gear"></i>
                 <h5>プロフィール編集</h5>
             <% end %>
@@ -35,7 +35,7 @@
             <h5>いいね一覧</h5>
         <% end %>
         <%# フォローフォロワー一覧のページPATHに変更 %>
-        <%= link_to user_follows_path(current_user) do %>
+        <%= link_to user_follows_path(current_user), data: {"turbolinks" => false} do %>
             <span><i class="fa-solid fa-users"></i></span>
             <h5>フォロー/フォロワー</h5>
         <% end %>

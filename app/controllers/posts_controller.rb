@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   GOOGLE_API_KEY = ENV['GOOGLE_API_SECRET_KEY']
+  
   def new
     @google_api_key = GOOGLE_API_KEY
     @post = Post.new
