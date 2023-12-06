@@ -1,6 +1,14 @@
-<h2>退会</h2>
+<% content_for :css do %>
+    <%= stylesheet_link_tag 'unsubscribe' %>
+<% end %>
 
-<p>本当に退会しますか？</p>
+<div class="unsubscribe-contents">
+    <h2>退会</h2>
 
-<%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？"} %>
-<%= link_to "退会しない", posts_path %>
+    <p>本当に退会しますか？</p>
+
+    <div class="yes-or-no">
+        <span><%= link_to "退会する", withdrawal_path, method: :patch %></span>
+        <span><%= link_to "退会しない", posts_path %></span>
+    </div>
+</div>
