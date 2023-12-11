@@ -17,22 +17,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-
-// class MobileMenu{
-//     constructor(){
-//         this.DOM = {};
-//         this.DOM.btn = document.querySelector('.mobile-menu__btn');
-//         this.DOM.container = document.querySelector('#global-container');
-//         this.DOM.btn.addEventListener('click', this._toggle.bind(this));
-//     }
-
-//     _toggle(){
-//         this.DOM.container.classList.toggle('menu-open');
-//     }
-// }
-
-// new MobileMenu();
-
 $(function(){
     $('.about-comment').on('click', () => {
         $('.modal').css('display','flex');
@@ -57,5 +41,10 @@ $(function(){
         $('.follower-tab').removeClass('active');
         $('.follow-list').addClass('box-show');
         $('.follower-list').removeClass('box-show');
+    });
+    $('.menu-trigger').on('click',function(event){
+        $(this).toggleClass('active');
+        $('#sp-menu').toggleClass('panelactive');
+        event.preventDefault();
     });
 });

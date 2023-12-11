@@ -22,9 +22,11 @@
                         <span><%= post.user.name %></span>
                     </div>
                 <% end %>
-                    <div id="favorite-btn-<%= post.id %>" >
-                        <%= render "favorites/favorite", post: post %>
-                    </div>
+                    <% if user_signed_in? %>
+                        <div id="favorite-btn-<%= post.id %>" >
+                            <%= render "favorites/favorite", post: post %>
+                        </div>
+                    <% end %>
                 </div>
                 <%= link_to post_path(post), data: {"turbolinks" => false} do %>
                     <div class="post-item">

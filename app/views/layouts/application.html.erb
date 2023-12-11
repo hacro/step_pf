@@ -19,95 +19,60 @@
   <body>
     <header class="header">
       <div class="logo">App Logo</div>
-      <% if user_signed_in? %>
-        <button id="mobile-menu__btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <%# デスクトップ用メニュー %>
-
-        <nav class="desktop-nav">
+      <nav id="sp-menu">
+        <ul>
           <li>
-            <%= link_to posts_path do %>
-              <i class="fa-solid fa-house"></i>
-            <% end %>
+            <span><%= link_to "みんなのポスト一覧", posts_path, data: {"turbolinks" => false} %></span>
           </li>
-          <li>
-            <%= link_to favorites_path do %>
-              <i class="fa-solid fa-heart"></i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to mypage_path do %>
-              <i class="fa-solid fa-user"></i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_post_path, data: {"turbolinks" => false} do %>
-              <i class="fa-solid fa-square-plus"></i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa-solid fa-right-from-bracket"></i>
-            <% end %>
-          </li>
-
-        <%# モバイル用メニュー %>
-        <nav id="mobile-menu">
-          <ul class="mobile-menu__main">
-            <li class="mobile-menu__item">
-              <span><%= link_to "みんなのポスト一覧", posts_path %></span>
+          <% if user_signed_in? %>
+            <li>
+              <span><%= link_to "いいねしたポスト", favorites_path, data: {"turbolinks" => false} %></span>
             </li>
-            <li class="mobile-menu__item">
-              <span><%= link_to "いいねしたポスト", favorites_path %></span>
+          <% else %>
+            <li>
+              <span><%= link_to "いいねしたポスト", new_user_session_path %></span>
             </li>
-            <li class="mobile-menu__item">
-              <span><%= link_to "マイページ", mypage_path %></span>
+          <% end %>
+          <% if user_signed_in? %>
+            <li>
+              <span><%= link_to "マイページ", mypage_path, data: {"turbolinks" => false} %></span>
             </li>
-            <li class="mobile-menu__item">
-              <span><%= link_to "新規投稿", new_post_path %></span>
+          <% else %>
+            <li>
+              <span><%= link_to "マイページ", new_user_session_path %></span>
             </li>
-            <li class="mobile-menu__item">
+          <% end %>
+          <% if user_signed_in? %>
+            <li>
+              <span><%= link_to "新規投稿", new_post_path, data: {"turbolinks" => false} %></span>
+            </li>
+          <% else %>
+            <li>
+              <span><%= link_to "新規投稿", new_user_session_path %></span>
+            </li>
+          <% end %>
+          <% if user_signed_in? %>
+            <li>
               <span><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></span>
             </li>
-          </ul>
-        </nav>
-      <% end %>
+          <% else %>
+            <li>
+              <span><%= link_to "ログイン", new_user_session_path %></span>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+      <div id="hm-icon">
+        <a href="#" class="menu-trigger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
     </header>
     <%= yield %>
     <%# <footer>
       <span>footerfooter...</span>
     </footer> %>
   </body>
-  <script>
-
-    const hamburgerBtn = document.getElementById('mobile-menu__btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburgerBtn.addEventListener('click', ()=> {
-      mobileMenu.classList.toggle('menu-open');
-      // hamburgerBtn.classList.toggle('menu-open');
-
-    });
-
-//     class MobileMenu{
-//     constructor(){
-//         this.DOM = {};
-//         this.DOM.btn = document.querySelector('.mobile-menu__btn');
-//         this.DOM.container = document.querySelector('.mobile-menu');
-//         this._addEvent();
-//     }
-
-//     _toggle(){
-//         this.DOM.container.classList.toggle('menu-open');
-//     }
-//     _addEvent(){
-//       this.DOM.btn.addEventListener('click',this._toggle.bind(this));
-//     }
-// }
-
-// new MobileMenu();
-  </script>
 </html>
