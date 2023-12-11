@@ -17,17 +17,21 @@
   </head>
 
   <body>
-    <div class="container">
-      <header>
-        <div class="logo">
-          <h2>App logo</h2>
-        </div>
-        <% if user_signed_in? %>
-        <div class="nav-icon">
+    <header class="header">
+      <div class="logo">App Logo</div>
+      <% if user_signed_in? %>
+        <button id="mobile-menu__btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <%# デスクトップ用メニュー %>
+
+        <nav class="desktop-nav">
           <li>
             <%= link_to posts_path do %>
               <i class="fa-solid fa-house"></i>
-              <% end %>
+            <% end %>
           </li>
           <li>
             <%= link_to favorites_path do %>
@@ -49,13 +53,61 @@
               <i class="fa-solid fa-right-from-bracket"></i>
             <% end %>
           </li>
-        </div>
-        <% end %>
-      </header>
-      <%= yield %>
-    </div>
+
+        <%# モバイル用メニュー %>
+        <nav id="mobile-menu">
+          <ul class="mobile-menu__main">
+            <li class="mobile-menu__item">
+              <span><%= link_to "みんなのポスト一覧", posts_path %></span>
+            </li>
+            <li class="mobile-menu__item">
+              <span><%= link_to "いいねしたポスト", favorites_path %></span>
+            </li>
+            <li class="mobile-menu__item">
+              <span><%= link_to "マイページ", mypage_path %></span>
+            </li>
+            <li class="mobile-menu__item">
+              <span><%= link_to "新規投稿", new_post_path %></span>
+            </li>
+            <li class="mobile-menu__item">
+              <span><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></span>
+            </li>
+          </ul>
+        </nav>
+      <% end %>
+    </header>
+    <%= yield %>
     <%# <footer>
       <span>footerfooter...</span>
     </footer> %>
   </body>
+  <script>
+
+    const hamburgerBtn = document.getElementById('mobile-menu__btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburgerBtn.addEventListener('click', ()=> {
+      mobileMenu.classList.toggle('menu-open');
+      // hamburgerBtn.classList.toggle('menu-open');
+
+    });
+
+//     class MobileMenu{
+//     constructor(){
+//         this.DOM = {};
+//         this.DOM.btn = document.querySelector('.mobile-menu__btn');
+//         this.DOM.container = document.querySelector('.mobile-menu');
+//         this._addEvent();
+//     }
+
+//     _toggle(){
+//         this.DOM.container.classList.toggle('menu-open');
+//     }
+//     _addEvent(){
+//       this.DOM.btn.addEventListener('click',this._toggle.bind(this));
+//     }
+// }
+
+// new MobileMenu();
+  </script>
 </html>

@@ -3,8 +3,8 @@
 <% end %>
 
 <div class="index-container">
+    <h1>けんさく</h1>
     <div class="searching-form">
-        <h1>けんさく</h1>
         <%= form_with url: search_posts_path, local: false, method: :get do |f| %>
             <%= f.text_field :keyword, placeholder: "地域の投稿を検索する", class: "input-text"%>
             <%= f.submit "検索", class: "search-submit" %>

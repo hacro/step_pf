@@ -3,7 +3,8 @@
 .unsubscribe-contents{
     display: block;
     width: 80%;
-    margin: 0 auto;
+    margin: 50px auto 300px;
+    text-align: center;
     h2{
         color: $cWhite;
         font-size: 36px;
@@ -11,7 +12,7 @@
         margin-bottom: 70px;
     }
     p{
-        color: $cWhite;
+        color: $pGray;
         font-size: 18px;
         font-weight: bold;
     }

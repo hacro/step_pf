@@ -1,14 +1,26 @@
 @import 'color';
+@import 'mq';
 
 .user-edit-contents{
     h1{
         color: $cWhite;
         font-size: 48px;
-        margin-bottom: 100px;
+        display: block;
+        width: 50%;
+        margin: 50px auto 100px;
+        border-bottom: solid 3px $cWhite;
+        text-align: center;
+        @include mq(smp){
+            font-size: 32px;
+            width: 40%;
+        }
     }
     .edit-form{
         width: 50%;
         margin: 0 auto;
+        @include mq(smp){
+            width: 90%;
+        }
         .form-group{
             width: 80%;
             text-align: start;
@@ -18,6 +30,9 @@
                 color: $cWhite;
                 font-size: 34px;
                 font-weight: bold;
+                @include mq(smp){
+                    font-size: 28px;
+                }
             }
             input{
                 width: 100%;

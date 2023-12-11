@@ -1,0 +1,10 @@
+$breakpoints :(
+    'smp': '(max-width: 800px)',
+    'md': '(min-width: 801px)'
+);
+
+@mixin mq($breakpoint: md){
+    @media #{map-get($breakpoints,$breakpoint)}{
+        @content
+    }
+}

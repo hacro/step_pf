@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "color";
-
+@import "mq";
 
 
     .post-show-container{
@@ -17,12 +17,18 @@
             width: 150px;
             height: 70px;
             display: inline-block;
+            @include mq(smp){
+                font-size: 38px;
+            }
         }
         .contents-all{
             border-radius: 5px;
             display: block;
             width: 80%;
-            margin: 0 auto;
+            margin: 0 auto 300px;
+            @include mq(smp){
+                width: 85%;
+            }
             .post-show{
                 display: block;
                 width: 100%;
@@ -36,6 +42,9 @@
                     width: 80%;
                     margin: 0 auto 50px;
                     padding-top: 30px;
+                    @include mq(smp){
+                        width: 85%;
+                    }
                     .about-user{
                         a{
                             text-decoration: none;
@@ -44,12 +53,19 @@
                             color: $cBlack;
                             display: flex;
                             align-items: center;
+                            @include mq(smp){
+                                font-size: 20px;
+                            }
                             img{
                                 width: 60px;
                                 height: 60px;
                                 border-radius: 50px;
                                 border: solid 1px $lineGray;
                                 margin-right: 15px;
+                                @include mq(smp){
+                                    width: 40px;
+                                    height: 40px;
+                                }
                             }
                         }
                     }
@@ -68,6 +84,10 @@
                             transition: all .3s ease;
                             text-align: center;
                             text-decoration: none;
+                            @include mq(smp){
+                                width: 150px;
+                                height: 45px;
+                            }
                             span{
                                 display: flex;
                                 height: 100%;
@@ -85,6 +105,9 @@
                         a{
                             font-size: 24px;
                             color: $cvPink;
+                            @include mq(smp){
+                                font-size: 18px;
+                            }
                         }
                     }
                 }
@@ -104,14 +127,23 @@
                         color: $cvPink;
                         font-size: 28px;
                         font-weight: bold;
+                        @include mq(smp){
+                            font-size: 21px;
+                        }
                     }
                     h3{
                         font-size: 28px;
                         margin-bottom: 5px;
                         font-weight: bold;
+                        @include mq(smp){
+                            font-size: 21px;
+                        }
                     }
                     p{
                         font-size: 20px;
+                        @include mq(smp){
+                            font-size: 16px;
+                        }
                     }
                     .create-date{
                         display: block;
@@ -132,11 +164,16 @@
                 border-bottom: solid 2px $lineGray;
                 .fc-count{
                     display: flex;
-                    width: 40%;
+                    width: 60%;
+                    @include mq(smp){
+                        width: 80%;
+                    }
                     .about-favo{
-                        margin: auto 0 auto 10%;
+                        margin: auto 20px auto 10%;
                             a{
-                                font-size: 24px;
+                                display: flex;
+                                align-items: center;
+                                font-size: 21px;
                                 text-decoration: none;
                                 color: $pGray;
                             }
@@ -148,17 +185,20 @@
                     .about-comment{
                         display: flex;
                         align-items: center;
-                        margin-left: 30px;
                         cursor: pointer;
                         z-index: 0;
                     }
                     p{
                         color: $pGray;
                         font-weight: bold;
+                        font-size: 21px;
                     }
                 }
                 .trush-box{
                     margin: auto 10%;
+                    @include mq(smp){
+                        margin: auto 5px auto 0;
+                    }
                 }
             }
             .comment-index{
@@ -175,11 +215,12 @@
                     align-items: center;
                     .comment-user{
                         display: flex;
-                        font-size: 24px;
+                        font-size: 22px;
                         align-items: center;
                         img{
                             width: 60px;
                             height: 60px;
+                            border-radius: 50px;
                         }
                         h5{
                             margin-bottom: 20px;
@@ -237,6 +278,9 @@
         padding: 10px;
         border-radius: 20px;
         min-width: 500px;
+        @include mq(smp){
+            min-width: 350px;
+        }
         .modal-for-user{
             display: flex;
             justify-content: space-between;

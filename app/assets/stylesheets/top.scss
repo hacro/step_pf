@@ -1,20 +1,36 @@
 @import 'color';
+@import 'mq';
 
 .top-container{
     color: $cWhite;
+    text-align: center;
     h1{
         font-size: 68px;
         font-weight: bold;
         letter-spacing: 3px;
         -webkit-text-stroke: 4px $cvPink;
+        @include mq(smp){
+            width: 90%;
+            margin: 0 auto;
+            font-size: 58px;
+        }
     }
     .title-caption{
-        margin-top: 50px;
-        margin-bottom: 150px;
+
+        width: 75%;
+        margin: 50px auto 150px;
+        @include mq(smp){
+            width: 85%;
+            margin: 50px auto;
+        }
         p{
             font-size: 21px;
             font-weight: bold;
             letter-spacing: 1px;
+            @include mq(smp){
+                font-size: 14px;
+                letter-spacing: 0.5px;
+            }
         }
     }
     .sign-btn{
@@ -33,6 +49,10 @@
             transition: all .3s ease;
             text-align: center;
             text-decoration: none;
+            @include mq(smp){
+                width: 150px;
+                font-size: 16px;
+            }
             span{
                 display: flex;
                 height: 100%;

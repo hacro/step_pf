@@ -9,7 +9,7 @@
                 <div class="user-header">
                     <div class="about-user">
                         <%= link_to user_path(follower) do %>
-                            <%= image_tag follower.get_profile_image, style: "width: 100px; height: 100px;"  %>
+                            <%= image_tag follower.get_profile_image %>
                             <div class="name-introduction">
                                 <h3><%= follower.name %></h3>
                                 <% if follower.introduction.present? %>

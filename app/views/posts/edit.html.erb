@@ -2,8 +2,8 @@
     <%= stylesheet_link_tag 'post_edit' %>
 <% end %>
 
-    <h1>ポスト編集</h1>
 
+<h1>ポスト編集</h1>
 <div class="post-edit-contents">
     <%=  form_with model: @post, ulr: post_path(@post), method: :patch do |f| %>
         <h3>休憩スポット　or　遊び場</h3>
@@ -25,7 +25,7 @@
         <h3>この施設があるところ</h3>
         <div class="location-registration">
             <div class="search-input">
-                    <input id="address" type="text" value="" class="text-area" >
+                    <input id="address" type="text" value="" class="text-area" placeholder="施設名やキーワードを入力" >
                     <input type="button" value="search", class="search-btn", onclick=codeAddress()>
             </div>
             <div id="addressOnDisplay", class="address-area" >

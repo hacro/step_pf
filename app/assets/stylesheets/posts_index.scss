@@ -1,20 +1,36 @@
 @import 'color';
-
+@import 'mq';
 
 .index-container{
+    margin-bottom: 300px;
     h1{
         color: $cWhite;
         font-size: 48px;
+        text-align: center;
+        @include mq(smp){
+            font-size: 32px;
+        }
     }
     .searching-form{
+        display: flex;
         width: 50%;
         margin: 0 auto 100px;
         border-bottom: solid 3px $cWhite;
         padding-bottom: 50px;
+        @include mq(smp){
+            width: 80%;
+        }
         form{
             height: 50px;
+            display: flex;
+            width: 80%;
+            margin: 0 auto;
+            @include mq(smp){
+                width: 100%;
+                height: 45px;
+            }
             .input-text{
-                width: 50%;
+                width: 80%;
                 height: 90%;
                 font-size: 16px;
                 border-radius: 10px;
@@ -50,6 +66,10 @@
             color: $cWhite;
             font-size: 32px;
             margin-bottom: 50px;
+            text-align: center;
+            @include mq(smp){
+                font-size: 28px;
+            }
         }
         .post-content{
             width: 50%;
@@ -57,6 +77,10 @@
             margin: 0 auto 60px;
             border-radius: 20px;
             padding: 30px;
+            @include mq(smp){
+                width: 65%;
+                padding: 20px;
+            }
             a{
                 text-decoration: none;
             }
@@ -80,6 +104,10 @@
                             border-radius: 50px;
                             border: solid 1px $lineGray;
                             margin-right: 15px;
+                            @include mq(smp){
+                                width: 40px;
+                                height: 40px;
+                            }
                         }
                     }
                 }
@@ -88,6 +116,9 @@
                     align-items: center;
                     a{
                         display: flex;
+                        @include mq(smp){
+                            font-size: 12px;
+                        }
                     }
                 }
             }
@@ -124,6 +155,7 @@
     .pagination{
         width: 80%;
         margin: 100px auto 300px;
+        text-align: center;
         span{
             color: $cWhite;
             font-size: 24px;

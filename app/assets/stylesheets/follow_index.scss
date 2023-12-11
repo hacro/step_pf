@@ -1,4 +1,5 @@
 @import 'color';
+@import 'mq';
 
 .followings-contents, .followers-contents{
     .followings-index, .followers-index{
@@ -13,6 +14,9 @@
             align-items: center;
             width: 80%;
             margin: 50px auto 0;
+            @include mq(smp){
+                width: 90%;
+            }
             .about-user{
                 display: flex;
                 align-items: center;
@@ -20,13 +24,18 @@
                     display: flex;
                     align-items: center;
                     text-decoration: none;
-                }
-                img{
-                    border-radius: 50px;
-                    margin-right: 20px;
-                    border: solid 0.5px $pGray;
-                }
-                .name-introduction{
+                    img{
+                        border-radius: 50px;
+                        margin-right: 20px;
+                        border: solid 0.5px $pGray;
+                        width: 100px;
+                        height: 100px;
+                        @include mq(smp){
+                            width: 65px;
+                            height: 65px;
+                        }
+                    }
+                    .name-introduction{
                         h3{
                             text-decoration: none;
                             text-align: start;
@@ -34,11 +43,18 @@
                             font-size: 24px;
                             font-weight: bold;
                             margin: 0;
+                            @include mq(smp){
+                                font-size: 18px;
+                            }
                         }
                         span{
                             font-size: 16px;
                             color: $pGray;
+                            @include mq(smp){
+                                font-size: 14px;
+                            }
                         }
+                    }
                 }
             }
             .follow-btn{
@@ -54,6 +70,10 @@
                 box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), inset 0px -3px 6px -2px rgba(0, 0, 0, 0.3);
                 transition: all .3s ease;
                 text-align: center;
+                @include mq(smp){
+                    width: 110px;
+                    height: 35px;
+                }
                 a{
                     text-decoration: none;
                     margin: auto;
@@ -62,6 +82,9 @@
                         color: $cWhite;
                         margin: 5px auto;
                         text-decoration: none;
+                        @include mq(smp){
+                            font-size: 16px;
+                        }
                     }
                 }
                 &:hover{

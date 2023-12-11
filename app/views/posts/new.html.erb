@@ -83,14 +83,14 @@
             <script src= "https://maps.googleapis.com/maps/api/js?key=<%= @google_api_key %>&callback=initMap" async defer ></script>
     <%# ここまで %>
 
-        <h3>施設の詳細（施設の建物名や階数など）</h3>
+        <h3>施設の詳細（施設の建物名など）</h3>
         <div class="field">
             <%= f.text_area :spot_detail , placeholder: "例）　休憩スポット
 〇〇屋の2階のトイレの横に休憩室があります。
 例）　遊び場
 〇〇駅の一番近いコンビニの約20メートル先にあります。" %>
         </div>
-        <h3>その他（持ち物や注意するところ）</h3>
+        <h3>その他（持ち物や注意点）</h3>
         <div class="field">
             <%= f.text_area :other_info, placeholder:"例）　休憩スポット
 ここにはお湯のサーバーはないので、お湯は各自で持っていかないといけません。

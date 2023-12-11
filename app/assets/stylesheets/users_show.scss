@@ -1,149 +1,186 @@
 @import 'color';
+@import 'mq';
 
-
-.user-show-user{
-    width: 80%;
-    margin: 0 auto;
-    border-bottom: solid 3px $cWhite;
-    h2{
-        color: $cWhite;
-        font-size: 34px;
+.user-show-container{
+    text-align: center;
+    margin-top: 100px;
+    @include mq(smp){
+        margin-top: 50px;
     }
-    img{
-    display: block;
-    width: 200px;
-    margin: 0 auto;
-    border: none;
-    border-radius: 50%;
-    }
-    .about-user-count{
-        display: flex;
-        width: 60%;
-        justify-content: space-around;
-        margin: 50px auto 60px;
-        color: $cCountPink;
-        font-size: 18px;
-        font-weight: bold;
-        .some-counts{
-            width: 50%;
-            a{
-                text-decoration: none;
-                color: $cCountPink;
-            }
-        }
-    }
-    p{
-        color: $cWhite;
-        font-size: 21px;
-        font-weight: bold;
-    }
-    .follow-btn{
-        margin-bottom: 20px;
-        a{
-            display: block;
-            width: 190px;
-            height: 50px;
-            border-radius: 50px;
-            background-color: $cvPink;
+    .user-show-user{
+        width: 80%;
+        margin: 0 auto;
+        border-bottom: solid 3px $cWhite;
+        h2{
             color: $cWhite;
-            font-size: 20px;
-            border: none;
-            font-weight: bold;
-            box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), inset 0px -3px 6px -2px rgba(0, 0, 0, 0.3);
-            transition: all .3s ease;
-            text-align: center;
-            text-decoration: none;
-            margin: 50px auto 100px;
-            span{
-                display: flex;
-                height: 100%;
-                align-items: center;
-                justify-content: center;
-            }
-            &:hover{
-                box-shadow: none;
-                transform: translateY(-2px),translateZ(-2px);
-                cursor: pointer;
+            font-size: 34px;
+            @include mq(smp){
+                font-size: 28px;
             }
         }
-    }
-}
-.user-posts-index{
-    h1{
-        color: $cWhite;
-        margin: 50px auto 100px;
-    }
-    .post-content{
-        width: 50%;
-        background-color: $cWhite;
-        margin: 0 auto 60px;
-        border-radius: 20px;
-        padding: 30px;
-        a{
-            text-decoration: none;
+        img{
+        display: block;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        border: none;
+        border-radius: 50%;
+        @include mq(smp){
+            width: 150px;
+            height: 150px;
         }
-        .post-head{
+        }
+        .about-user-count{
             display: flex;
-            justify-content: space-between;
+            width: 60%;
+            justify-content: space-around;
+            margin: 50px auto 60px;
+            color: $cCountPink;
+            font-size: 21px;
+            font-weight: bold;
+            @include mq(smp){
+                width: 100%;
+                font-size: 14px;
+            }
+            .some-counts{
+                width: 50%;
+                a{
+                    text-decoration: none;
+                    color: $cCountPink;
+                }
+            }
+        }
+        p{
+            color: $cWhite;
+            font-size: 21px;
+            font-weight: bold;
+            @include mq(smp){
+                font-size: 16px;
+            }
+        }
+        .follow-btn{
             margin-bottom: 20px;
-            text-align: center;
+            a{
+                display: block;
+                width: 190px;
+                height: 50px;
+                border-radius: 50px;
+                background-color: $cvPink;
+                color: $cWhite;
+                font-size: 20px;
+                border: none;
+                font-weight: bold;
+                box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5), inset 0px -3px 6px -2px rgba(0, 0, 0, 0.3);
+                transition: all .3s ease;
+                text-align: center;
+                text-decoration: none;
+                margin: 50px auto 100px;
+                @include mq(smp){
+                    width: 160px;
+                    height: 45px;
+                }
+                span{
+                    display: flex;
+                    height: 100%;
+                    align-items: center;
+                    justify-content: center;
+                }
+                &:hover{
+                    box-shadow: none;
+                    transform: translateY(-2px),translateZ(-2px);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .user-posts-index{
+        h1{
+            color: $cWhite;
+            margin: 50px auto 100px;
+            @include mq(smp){
+                font-size: 28px;
+                margin-bottom: 50px;
+            }
+        }
+        .post-content{
+            width: 50%;
+            background-color: $cWhite;
+            margin: 0 auto 60px;
+            border-radius: 20px;
+            padding: 30px;
+            @include mq(smp){
+                width: 65%;
+            }
             a{
                 text-decoration: none;
-                font-size: 16px;
-                color: $cBlack;
-                font-weight: bold;
-                .user-name{
+            }
+            .post-head{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                text-align: center;
+                a{
+                    text-decoration: none;
+                    font-size: 16px;
+                    color: $cBlack;
+                    font-weight: bold;
+                    .user-name{
+                        display: flex;
+                        align-items: center;
+                        padding-left: 10px;
+                        img{
+                            width: 55px;
+                            height: 55px;
+                            border-radius: 50px;
+                            border: solid 1px $lineGray;
+                            margin-right: 15px;
+                            @include mq(smp){
+                                width: 40px;
+                                height: 40px;
+                            }
+                        }
+                    }
+                }
+                .favorite-btn{
                     display: flex;
                     align-items: center;
-                    padding-left: 10px;
-                    img{
-                        width: 55px;
-                        height: 55px;
-                        border-radius: 50px;
-                        border: solid 1px $lineGray;
-                        margin-right: 15px;
+                    a{
+                        display: flex;
                     }
                 }
             }
-            .favorite-btn{
-                display: flex;
-                align-items: center;
-                a{
-                    display: flex;
+            .post-item{
+                img{
+                    display: block;
+                    width: 80%;
+                    height: auto;
+                    margin: 0 auto;
                 }
-            }
-        }
-        .post-item{
-            img{
-                display: block;
-                width: 80%;
-                height: auto;
-                margin: 0 auto;
-            }
-            .post-detail{
-                width: 80%;
-                margin: 20px auto 0;
-                text-align: start;
-                color: $cBlack;
-                font-size: 16px;
-                span{
-                    display: inline-block;
-                    padding-bottom: 10px;
-                    &:first-child{
-                        color: $cvPink;
-                        font-weight: bold;
-                        font-size: 18px;
-                        padding-bottom: 15px;
-                    }
-                    h5{
-                        margin-bottom: 5px;
+                .post-detail{
+                    width: 80%;
+                    margin: 20px auto 0;
+                    text-align: start;
+                    color: $cBlack;
+                    font-size: 16px;
+                    span{
+                        display: inline-block;
+                        padding-bottom: 10px;
+                        &:first-child{
+                            color: $cvPink;
+                            font-weight: bold;
+                            font-size: 18px;
+                            padding-bottom: 15px;
+                        }
+                        h5{
+                            margin-bottom: 5px;
+                        }
                     }
                 }
             }
         }
-    }
-    h4{
-        color: $titleGray;
-        font-size: 28px;
+        h4{
+            color: $titleGray;
+            font-size: 28px;
+        }
     }
 }
