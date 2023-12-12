@@ -8,7 +8,7 @@
         <div class="post-show">
             <div class="user-info">
                 <div class="about-user">
-                    <%= link_to user_path(@post.user_id) do %>
+                    <%= link_to user_path(@post.user_id), data: {"turbolinks" => false} do %>
                         <%= image_tag @post.user.get_profile_image %>
                         <%= @post.user.name %>
                     <% end %>

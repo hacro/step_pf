@@ -26,8 +26,14 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
         name: ユーザーネーム
+      post:
+        location: 住所
+        caption: 説明文
+        spot_detail: 施設の詳細
+        other_info: その他
     models:
       user: ユーザー
+      post: ポスト
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

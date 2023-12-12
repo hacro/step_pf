@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post)
     else
+      @google_api_key = GOOGLE_API_KEY
       render :new
     end
   end
@@ -35,11 +36,13 @@ class PostsController < ApplicationController
     @google_api_key = GOOGLE_API_KEY
     @post = Post.find(params[:id])
   end
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_image_params)
       redirect_to post_path(@post)
     else
+      @google_api_key = GOOGLE_API_KEY
       render :edit
     end
   end

@@ -16,6 +16,25 @@ h1{
         justify-content: center;
     }
 }
+.error-contents{
+    display: block;
+    width: 60%;
+    margin: 30px auto 0;
+    @include mq(smp){
+        width: 80%;
+    }
+    .error-count{
+        color: $cRed;
+        font-weight: bold;
+    }
+    ul{
+        padding-left: 5px;
+        text-align: start;
+        color: $pGray;
+        font-size: 14px;
+    }
+}
+
 .post-edit-contents{
     width: 60%;
     margin: 50px auto 200px;

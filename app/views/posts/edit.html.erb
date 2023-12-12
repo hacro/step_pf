@@ -4,6 +4,18 @@
 
 
 <h1>ポスト編集</h1>
+<% if @post.errors.any? %>
+    <div class="error-contents">
+        <p class="error-count">
+            <%= @post.errors.count %>件のエラーが発生しました
+        </p>
+        <ul>
+            <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
 <div class="post-edit-contents">
     <%=  form_with model: @post, ulr: post_path(@post), method: :patch do |f| %>
         <h3>休憩スポット　or　遊び場</h3>

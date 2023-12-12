@@ -19,7 +19,9 @@
   <body>
     <header class="header">
       <div class="logo">
-        <%= link_to "App Logo", posts_path, data: {"turbolinks" => false} %>
+        <%= link_to posts_path, data: {"turbolinks" => false} do %>
+          <%= image_tag 'smiley_days_logo.png' %>
+        <% end %>
       </div>
       <nav id="sp-menu">
         <ul>
