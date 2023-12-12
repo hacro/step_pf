@@ -19,7 +19,7 @@
     }
     p{
         display: inline-block;
-        width: 60%;
+        // width: 60%;
         margin: -50px auto 50px;
         color: $cWhite;
         font-size: 18px;
@@ -27,7 +27,7 @@
     }
     .signin-form{
         width: 90%;
-        margin: 0 auto;
+        margin: 0 auto 50px;
         text-align: center;
         .alert{
             color: $cRed;
