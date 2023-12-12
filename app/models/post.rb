@@ -6,6 +6,9 @@ class Post < ApplicationRecord
     has_many :comments, dependent: :destroy
 
     validates :location, presence: true
+    validates :caption, length: {maximum: 200 }
+    validates :spot_detail, length: {maximum: 200 }
+    validates :other_info, length: {maximum: 200 }
 
     def get_image(width,height)
         image.variant(resize_to_limit: [width, height])

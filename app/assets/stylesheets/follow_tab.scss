@@ -4,7 +4,8 @@
     .tab-list{
         display: flex;
         width: 80%;
-        margin: 0 auto;
+        margin: 50px auto 0;
+        padding: 0;
         @include mq(smp){
             width: 75%;
             margin-top: 50px;

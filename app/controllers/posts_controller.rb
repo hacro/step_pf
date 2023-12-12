@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   GOOGLE_API_KEY = ENV['GOOGLE_API_SECRET_KEY']
-  
+
   def new
     @google_api_key = GOOGLE_API_KEY
     @post = Post.new
@@ -10,8 +10,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_image_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to post_path(@post)
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      render :new
+    end
   end
 
   def index
@@ -19,7 +22,7 @@ class PostsController < ApplicationController
   end
   def search
     search_word = params[:keyword]
-    @posts = Post.where('location LIKE?', "%#{search_word}%")
+    @posts = Post.where('location LIKE?', "%#{search_word}%").order(created_at: :desc)
   end
 
   def show

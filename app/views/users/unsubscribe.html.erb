@@ -8,7 +8,7 @@
     <p>本当に退会しますか？</p>
 
     <div class="yes-or-no">
-        <span><%= link_to "退会する", withdrawal_path, method: :patch %></span>
+        <span><%= link_to "退会する", user_path(current_user), method: :delete %></span>
         <span><%= link_to "退会しない", posts_path %></span>
     </div>
 </div>

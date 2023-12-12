@@ -16,9 +16,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
-  def active_for_authentication?
-    super && (is_withdrawal == false)
-  end
+  # def active_for_authentication?
+  #   super && (is_withdrawal == false)
+  # end
 
   def get_profile_image
     unless profile_image.attached?
@@ -48,5 +48,6 @@ class User < ApplicationRecord
   
 
 
-  validates :name, presence: true, length: { minimum: 2 }
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+
 end

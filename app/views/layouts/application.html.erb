@@ -18,7 +18,9 @@
 
   <body>
     <header class="header">
-      <div class="logo">App Logo</div>
+      <div class="logo">
+        <%= link_to "App Logo", posts_path, data: {"turbolinks" => false} %>
+      </div>
       <nav id="sp-menu">
         <ul>
           <li>
@@ -70,6 +72,7 @@
         </a>
       </div>
     </header>
+
     <%= yield %>
     <%# <footer>
       <span>footerfooter...</span>

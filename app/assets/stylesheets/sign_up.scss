@@ -21,6 +21,20 @@
         width: 85%;
         margin: 0 auto;
         text-align: center;
+        #error_explanation{
+            width: 120%;
+            .error-count{
+                color: $cRed;
+                font-weight: bold;
+                text-align: start;
+            }
+            ul{
+                padding-left: 5px;
+                text-align: start;
+                color: $pGray;
+                font-size: 14px;
+            }
+        }
         .field{
             text-align: start;
             margin-bottom: 50px;

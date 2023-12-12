@@ -17,7 +17,7 @@
                 <%= f.label :spot_type_id_2, "遊び場" %>
             </div>
         </div>
-        <h3>説明（200文字以上）</h3>
+        <h3>説明（200文字以内）</h3>
         <div class="field">
             <%= f.text_area :caption %>
         </div>
@@ -96,4 +96,5 @@
         </div>
         <%= f.submit "内容を変更する", class: "submit-btn" %>
     <% end %>
+    <span class="back-btn"><%= link_to "もどる", post_path(@post), data: {"turbolinks" => false} %></span>
 </div>

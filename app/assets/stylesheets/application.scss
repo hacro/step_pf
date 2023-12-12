@@ -43,7 +43,11 @@ body{
         align-items: center;
         .logo{
             color: $cWhite;
-            margin-left: 160px;
+            padding-left: 10%;
+            a{
+                text-decoration: none;
+                color: $cWhite;
+            }
         }
         #sp-menu{
             position: fixed;

@@ -6,6 +6,7 @@
         font-size: 48px;
         width: 300px;
         margin: 0 auto;
+        text-align: center;
         @include mq(smp){
             font-size: 32px;
         }
