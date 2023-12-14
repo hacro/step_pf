@@ -44,9 +44,17 @@ body{
         .logo{
             color: $cWhite;
             padding-left: 10%;
+            @include mq(smp){
+                padding: 0;
+            }
             a{
                 text-decoration: none;
                 color: $cWhite;
+                img{
+                    @include mq(smp){
+                        width: 150px;
+                    }
+                }
             }
         }
         #sp-menu{
@@ -100,23 +108,6 @@ body{
                 }
             }
         }
-
-        // .desktop-nav{
-        //     display: flex;
-        //     align-items: center;
-        //     list-style: none;
-        //     width: 40%;
-        //     display: flex;
-        //     justify-content: flex-end;
-        //     margin-right: 160px;
-        //     li{
-        //         font-size: 34px;
-        //         margin-right: 30px;
-        //         a{
-        //             color: $cWhite;
-        //         }
-        //     }
-        // }
         #hm-icon{
             position: fixed;
             right: 20px;
