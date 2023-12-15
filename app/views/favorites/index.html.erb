@@ -5,32 +5,36 @@
 <div class="index-container">
     <div class="favorites-contents">
         <h2>いいねした投稿</h2>
-        <% @favorite_posts.each do |post| %>
-            <div class="post-content">
-                <%= link_to user_path(post.user_id) do %>
-                    <div class="post-head">
-                        <div class="user-name">
-                            <%= image_tag post.user.get_profile_image %>
-                            <span><%= post.user.name %></span>
+        <% if @favorite_posts.present? %>
+            <% @favorite_posts.each do |post| %>
+                <div class="post-content">
+                    <%= link_to user_path(post.user_id) do %>
+                        <div class="post-head">
+                            <div class="user-name">
+                                <%= image_tag post.user.get_profile_image %>
+                                <span><%= post.user.name %></span>
+                            </div>
+                    <% end %>
+                        <div id="favorite-btn-<%= post.id %>" >
+                            <%= render "favorites/favorite", post: post %>
                         </div>
-                <% end %>
-                    <div id="favorite-btn-<%= post.id %>" >
-                        <%= render "favorites/favorite", post: post %>
-                    </div>
-                    </div>
-                <%= link_to post_path(post), data: {"turbolinks" => false} do %>
-                    <div class="post-item">
-                        <% if post.image.present? %>
-                            <%= image_tag post.image, :size => '542x230' %>
-                        <% end %>
-                        <div class="post-detail">
-                            <span class="post-spot-type"><%= post.spot_type.type_name %></span></br>
-                            <span class="post-caption"><h5>説明: </h5><%= post.caption %></span></br>
-                            <span class="post-location"><h5>この施設の所在地: </h5><%= post.location %></span>
                         </div>
-                    </div>
-                <% end %>
-            </div>
+                    <%= link_to post_path(post), data: {"turbolinks" => false} do %>
+                        <div class="post-item">
+                            <% if post.image.present? %>
+                                <%= image_tag post.image, :size => '542x230' %>
+                            <% end %>
+                            <div class="post-detail">
+                                <span class="post-spot-type"><%= post.spot_type.type_name %></span></br>
+                                <span class="post-caption"><h5>説明: </h5><%= post.caption %></span></br>
+                                <span class="post-location"><h5>この施設の所在地: </h5><%= post.location %></span>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+        <% else %>
+            <h3>いいねした投稿はありません。</h3>
         <% end %>
     </div>
 </div>

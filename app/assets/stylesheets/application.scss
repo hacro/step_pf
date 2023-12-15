@@ -20,20 +20,14 @@
 
 @import 'color';
 @import 'mq';
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@200&family=PT+Serif&family=Train+One&display=swap');
 
-// #container{
-//     position: relative;
-//     background-color: $cPink;
-//     // height: 100vh;
-//     z-index: 2;
-//     transition: all .5s;
-// }
 
 body{
     margin: 0;
     background-color: $cPink;
     position: relative;
-    // height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     z-index: 2;
     transition: all .5s;
     .header{

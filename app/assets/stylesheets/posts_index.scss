@@ -67,10 +67,18 @@
         h2{
             color: $cWhite;
             font-size: 32px;
-            margin-bottom: 50px;
+            margin-bottom: 100px;
             text-align: center;
             @include mq(smp){
                 font-size: 28px;
+            }
+        }
+        h3{
+            color: $pGray;
+            text-align: center;
+            font-size: 21px;
+            @include mq(smp){
+                font-size: 16px;
             }
         }
         .post-content{
