@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
     # before_action :authenicate_user!
+    before_action :unlogin_user
 
     def create
         @post = Post.find(params[:post_id])
@@ -16,6 +17,13 @@ class FavoritesController < ApplicationController
     def index
         favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
         @favorite_posts = Post.find(favorites)
+    end
+
+    private
+    def unlogin_user
+        unless user_signed_in?
+            redirect_to new_user_session_path
+        end
     end
 
 end

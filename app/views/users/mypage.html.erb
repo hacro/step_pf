@@ -25,12 +25,12 @@
     </div>
         <p class="introduction"><%= @user.introduction %></p>
     <div class="select-btn">
-        <%= link_to  user_path(current_user) do %>
+        <%= link_to  user_path(current_user), data: {"turbolinks" => false} do %>
             <span><i class="fa-regular fa-newspaper"></i></span>
             <p class="about-icon">ポスト一覧</p>
         <% end %>
         <%# いいね一覧のPATHに変更 %>
-        <%= link_to favorites_path do %>
+        <%= link_to favorites_path, data: {"turbolinks" => false} do %>
             <span><i class="fa-solid fa-heart"></i></span>
             <p class="about-icon">いいね一覧</p>
         <% end %>
@@ -41,5 +41,5 @@
         <% end %>
     </div>
 
-    <%= link_to "退会", unsubscribe_path(@user), class: "unsubscribe-btn" %>
+    <%= link_to "退会", unsubscribe_path(@user), class: "unsubscribe-btn", data: {"turbolinks" => false} %>
 </div>

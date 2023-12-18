@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
         post = Post.find(params[:post_id])
         Comment.find(params[:post_id]).destroy
         redirect_back(fallback_location: post_path(post))
+
     end
 
 

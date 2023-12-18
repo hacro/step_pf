@@ -10,7 +10,7 @@
     h2{
         color: $cWhite;
         font-size: 42px;
-        text-align: start;
+        text-align: center;
         margin-bottom: 100px;
         @include mq(smp){
             font-size: 28px;

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   get "/users/mypage" => "users#mypage", as: "mypage"
   get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
-  patch "/users/:id/withdrawal" => "users#withdrawal", as: "withdrawal"
 
   resources :users, only: [:show, :edit, :update, :mypage, :unsubscribe, :destroy] do
     resources :follows, only: [:create, :destroy, :index]

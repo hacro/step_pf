@@ -1,5 +1,6 @@
 class FollowsController < ApplicationController
-
+  before_action :unlogin_user
+  
   # フォローする時
   def create
     @user = User.find(params[:user_id])
@@ -29,4 +30,11 @@ class FollowsController < ApplicationController
     user = User.find(params[:user_id])
     @users = user.followers
   end
+
+  private
+  def unlogin_user
+    unless user_signed_in?
+        redirect_to new_user_session_path
+    end
+end
 end

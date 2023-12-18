@@ -7,19 +7,23 @@
     @include mq(smp){
         width: 85%;
     }
+    .flash-msg{
+        font-size: 18px;
+        text-align: start;
+        color: $cRed;
+    }
     h2{
         color: $cWhite;
         font-size: 42px;
-        text-align: start;
-        margin-bottom: 100px;
+        text-align: center;
+        margin-bottom: 70pxpx;
         @include mq(smp){
             font-size: 28px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
     }
     p{
         display: inline-block;
-        // width: 60%;
         margin: -50px auto 50px;
         color: $cWhite;
         font-size: 18px;
@@ -27,7 +31,7 @@
     }
     .signin-form{
         width: 90%;
-        margin: 0 auto 50px;
+        margin: 0 auto;
         text-align: center;
         .alert{
             color: $cRed;
