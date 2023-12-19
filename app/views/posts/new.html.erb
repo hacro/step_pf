@@ -39,8 +39,8 @@
         <h3>この施設があるところ</h3>
         <div class="location-registration">
             <div class="search-input">
-                <input id="address" type="text" class="text-area" placeholder="施設名やキーワードを入力" >
-                <input type="button" value="search", class="search-btn" onclick=codeAddress()>
+                <input id="address" type="text" name="input_keyword" class="text-area" placeholder="施設名やキーワードを入力" >
+                <input type="button" value="search" name="search_btn" class="search-btn" onclick=codeAddress()>
             </div>
             <div id="addressOnDisplay", class="address-area" >
                 <%= f.text_area :location, placeholder: "検索後、こちらに住所が自動で入力されます" %>

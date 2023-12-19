@@ -9,7 +9,7 @@
             <div class="user-info">
                 <div class="about-user">
                     <%= link_to user_path(@post.user_id), data: {"turbolinks" => false} do %>
-                        <%= image_tag @post.user.get_profile_image %>
+                        <%= image_tag @post.user.get_profile_image, class: "user-profile-image" %>
                         <%= @post.user.name %>
                     <% end %>
                 </div>
@@ -68,7 +68,7 @@
                 <script src= "https://maps.googleapis.com/maps/api/js?key=<%= @google_api_key %>&callback=initMap" async defer ></script>
                 <h3>施設の詳細(施設の名前や階数など)</h3>
                 <p><%= @post.spot_detail %></p>
-                <h3>その他(持ち物や注意することなど)</h3>
+                <h3>その他（持ち物や注意点）</h3>
                 <p><%= @post.other_info %></p>
                 <div class="create-date">
                     <%= l @post.created_at %>
