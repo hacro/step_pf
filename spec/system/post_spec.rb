@@ -35,8 +35,12 @@ describe "ポスト" do
             end
             # it '検索フォームからキーワードを入力すると、住所がlocationフォームに反映されるか' do
             #     fill_in "input_keyword", with: "東京駅"
-            #     find('input[name="search_btn"]').click
-            #     expect(page).to have_field 'post[location]',with: "東京都千代田区丸の内１丁目９ 東京駅"
+            #     click_button 'search'
+            #     sleep(2)
+            #     # textarea = find('#post_location')
+            #     # expect(textarea.value).to eq "東京都千代田区丸の内１丁目９ 東京駅"
+            #     expect(find('#addressOnDisplay')).to have_content('東京都千代田区丸の内１丁目９ 東京駅')
+            #     # expect(page).to have_field 'post[location]',with: "東京都千代田区丸の内１丁目９ 東京駅"
             # end
             it 'Googleマップが表示されている' do
                 expect(page).to have_css '#g-map-search'

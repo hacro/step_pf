@@ -36,6 +36,15 @@
         .alert{
             color: $cRed;
         }
+        .registration-main{
+            #error_explanation{
+                .error-count{
+                    color: $cRed;
+                    margin: 0;
+                    text-align: start;
+                }
+            }
+        }
         .field{
             text-align: start;
             margin-bottom: 50px;

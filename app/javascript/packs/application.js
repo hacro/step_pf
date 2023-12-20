@@ -12,10 +12,12 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'jquery'
+import { AjaxRequestCounter } from "./ajax_request_counter";
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+AjaxRequestCounter.start()
 
 $(function(){
     $('.about-comment').on('click', () => {

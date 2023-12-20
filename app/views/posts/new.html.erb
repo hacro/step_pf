@@ -43,7 +43,7 @@
                 <input type="button" value="search" name="search_btn" class="search-btn" onclick=codeAddress()>
             </div>
             <div id="addressOnDisplay", class="address-area" >
-                <%= f.text_area :location, placeholder: "検索後、こちらに住所が自動で入力されます" %>
+                <%= f.text_field :location, placeholder: "検索後、こちらに住所が自動で入力されます" %>
             </div>
             <div id="g-map-search"></div>
         </div>
