@@ -19,6 +19,29 @@
             display: inline-block;
             @include mq(smp){
                 font-size: 38px;
+                margin-bottom: 20px;
+            }
+        }
+        .error-msg{
+            color: $cRed;
+            font-weight: bold;
+            display: flex;
+            width: 75%;
+            justify-content: flex-start;
+            margin: 0 auto 50px;
+            @include mq(smp){
+                font-size: 14px;
+            }
+        }
+        .success-msg{
+            color: $pGray;
+            font-weight: bold;
+            display: flex;
+            width: 75%;
+            justify-content: flex-start;
+            margin: 0 auto 50px;
+            @include mq(smp){
+                font-size: 14px;
             }
         }
         .contents-all{
@@ -27,7 +50,7 @@
             width: 80%;
             margin: 0 auto 300px;
             @include mq(smp){
-                width: 85%;
+                width: 90%;
             }
             .post-show{
                 display: block;
@@ -85,8 +108,9 @@
                             text-align: center;
                             text-decoration: none;
                             @include mq(smp){
-                                width: 150px;
-                                height: 45px;
+                                width: 100px;
+                                height: 40px;
+                                font-size: 14px;
                             }
                             span{
                                 display: flex;
@@ -112,7 +136,7 @@
                     }
                 }
                 .post-detail{
-                    width: 80%;
+                    width: 85%;
                     margin: 0 auto;
                     color: $pGray;
                     padding-bottom: 50px;
@@ -136,13 +160,13 @@
                         margin-bottom: 5px;
                         font-weight: bold;
                         @include mq(smp){
-                            font-size: 21px;
+                            font-size: 20px;
                         }
                     }
                     p{
                         font-size: 20px;
                         @include mq(smp){
-                            font-size: 16px;
+                            font-size: 14px;
                         }
                     }
                     .create-date{
@@ -221,6 +245,10 @@
                             width: 60px;
                             height: 60px;
                             border-radius: 50px;
+                            @include mq(smp){
+                                width: 50px;
+                                height: 50px;
+                            }
                         }
                         h5{
                             margin-bottom: 20px;

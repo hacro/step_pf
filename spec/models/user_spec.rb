@@ -26,12 +26,12 @@ RSpec.describe "Userモデルのテスト", type: :model do
         user.introduction = ""
         expect(user.valid?).to eq true;
       end
-      it "200文字以内であること" do
-        user.introduction = Faker::Lorem.characters(number:200)
+      it "50文字以内であること" do
+        user.introduction = Faker::Lorem.characters(number:50)
         expect(user.valid?).to eq true;
       end
-      it "201文字以上は弾かれること" do
-        user.introduction = Faker::Lorem.characters(number:201)
+      it "51文字以上は弾かれること" do
+        user.introduction = Faker::Lorem.characters(number:51)
         expect(user.valid?).to eq false;
       end
     end

@@ -4,6 +4,12 @@
 
 <div class="post-show-container">
     <h2>ポスト</h2>
+    <p class="error-msg">
+        <%= flash[:commentErrorMsg] %>
+    </p>
+    <p class="success-msg">
+        <%= flash[:commentSuccessMsg] %>
+    </p>
     <div class="contents-all">
         <div class="post-show">
             <div class="user-info">

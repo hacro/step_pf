@@ -186,8 +186,10 @@ describe "ポスト" do
             end
         end
         context 'ポスト詳細画面の表示確認' do
+            let!(:comment) { create(:comment, user: user, post: post2) }
+
             before do
-                visit post_path(post)
+                visit post_path(post2)
             end
 
             it 'ポストと表示されている' do
@@ -197,16 +199,107 @@ describe "ポスト" do
                 expect(page).to have_css('.user-profile-image')
             end
             it '投稿者のユーザーネームが表示されている' do
-                expect(page).to have_content user.name
+                expect(page).to have_content user2.name
             end
-            # it 'スポットタイプの名称が表示されている' do
-            #     expect(page).to have_content(post.spot_type_id.type_name)
-            # end
             it 'ラベル「説明」が表示されている' do
                 expect(page).to have_content('説明')
             end
             it 'post[caption]の内容が表示されている' do
-                expect(page).to have_content(post.caption)
+                expect(page).to have_content(post2.caption)
+            end
+            it 'ラベル「この施設があるところ」が表示されている' do
+                expect(page).to have_content('この施設があるところ')
+            end
+            it 'post[location]の内容が表示されている' do
+                expect(page).to have_content(post2.location)
+            end
+            it 'Google mapの地図が表示されている'do
+                expect(page).to have_css '#location-map'
+            end
+            it 'ラベル「施設の詳細（施設の名前や階数など）」が表示されている' do
+                expect(page).to have_content('施設の詳細(施設の名前や階数など)')
+            end
+            it 'post[spot_detail]の内容が表示されている' do
+                expect(page).to have_content(post2.spot_detail)
+            end
+            it 'ラベル「その他（持ち物や注意点）」が表示されている' do
+                expect(page).to have_content('その他（持ち物や注意点）')
+            end
+            it 'post[spot_detail]の内容が表示されている' do
+                expect(page).to have_content(post2.other_info)
+            end
+            it 'コメントを投稿したユーザーのプロフィール画像が表示されている' do
+                expect(page).to have_css '.comment-user'
+            end
+            it 'コメントを投稿したユーザーの名前が表示されている' do
+                expect(page).to have_content user.name
+            end
+            it 'ログインユーザーがコメント投稿者の場合、コメント削除のリンクが存在する' do
+                expect(page).to have_link nil, href: post_comments_path(comment)
+            end
+            it 'コメント投稿フォームが存在する' do
+                expect(page).to have_field 'comment[comment]'
+            end
+            it 'コメント投稿ボタンが存在する' do
+                expect(page).to have_button 'コメントする'
+            end
+        end
+    end
+    describe '投稿一覧画面' do
+        let!(:user2) { create(:user) }
+        let!(:post) { create(:post, user: user) }
+        let!(:post2) { create(:post, user: user2) }
+        context '表示の確認' do
+            before do
+                visit posts_path
+            end
+
+            it '「けんさく」と表示される' do
+                expect(page).to have_content('けんさく')
+            end
+            it 'けんさくタブが表示される' do
+                expect(page).to have_field 'keyword'
+            end
+            it 'けんさくボタンが表示される' do
+                expect(page).to have_button '検索'
+            end
+            it '「みんなの投稿」と表示される' do
+                expect(page).to have_content('みんなの投稿')
+            end
+            it '投稿ごとにいいねの件数が表示されている' do
+                expect(page).to have_content('いいね')
+            end
+            it '投稿ごとに投稿したユーザーの名前が表示されている' do
+                expect(page).to have_content user2.name
+            end
+            it '投稿ごとに投稿したユーザーのプロフィール画像が表示されている' do
+                expect(page).to have_css('.user-name')
+            end
+            it 'ユーザーネームとプロフィール画像のリンク先が正しい' do
+                click_link  user2.name
+                expect(current_path).to eq user_path(user2)
+            end
+            it '投稿情報部分のリンク先が正しい' do
+                click_link post2.location
+                expect(current_path).to eq post_path(post2)
+            end
+        end
+        context '投稿数が5個の場合のページネーションの表示確認' do
+            let!(:post) { create_list(:post, 3, user: user) }
+            before do
+                visit posts_path
+            end
+            it 'ページネーションは表示されない' do
+                expect(page).to_not have_content('1 2 Next Last')
+            end
+        end
+        context '投稿数が6個の場合のページネーションの表示確認' do
+            let!(:post) { create_list(:post, 6, user: user) }
+            before do
+                visit posts_path
+            end
+            it 'ページネーションが表示される' do
+                expect(page).to have_content('1 2 Next Last')
             end
         end
     end
