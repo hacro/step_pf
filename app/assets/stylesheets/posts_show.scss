@@ -13,13 +13,13 @@
             padding-top: 50px;
             font-size: 48px;
             border-bottom: solid 3px;
-            margin-bottom: 100px;
+            margin-bottom: 10px;
             width: 150px;
             height: 70px;
             display: inline-block;
             @include mq(smp){
                 font-size: 38px;
-                margin-bottom: 20px;
+                margin-bottom: 1px;
             }
         }
         .error-msg{
@@ -31,6 +31,8 @@
             margin: 0 auto 50px;
             @include mq(smp){
                 font-size: 14px;
+                margin: 0 auto;
+                justify-content: center;
             }
         }
         .success-msg{
@@ -42,6 +44,8 @@
             margin: 0 auto 50px;
             @include mq(smp){
                 font-size: 14px;
+                margin: 20px auto 0;
+                justify-content: center;
             }
         }
         .contents-all{
