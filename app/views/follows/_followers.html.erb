@@ -9,7 +9,9 @@
                 <div class="user-header">
                     <div class="about-user">
                         <%= link_to user_path(follower), data: {"turbolinks" => false} do %>
-                            <%= image_tag follower.get_profile_image %>
+                            <div class="prof-image">
+                                <%= image_tag following.get_profile_image %>
+                            </div>
                             <div class="name-introduction">
                                 <h3><%= follower.name %></h3>
                                 <% if follower.introduction.present? %>
