@@ -44,34 +44,6 @@
                     <p><%= @post.location %></p>
                 </div>
                 <div id="location-map" style="width: 100%; height: 500px"></div>
-                <%# Google mapの表示 %>
-                <script>
-                    let map;
-                    function initMap(){
-                        const target = document.getElementById('location-map');
-                        const geocoder = new google.maps.Geocoder();
-                        const address = document.getElementById('location-address').children[0].textContent;
-
-                        geocoder.geocode({ address: address}, function(results, status){
-                            if(status === 'OK' && results[0] ){
-                                map = new google.maps.Map(target, {
-                                    center: results[0].geometry.location,
-                                    zoom: 15
-                                });
-                                marker = new google.maps.Marker({
-                                    position: results[0].geometry.location,
-                                    map: map
-                                });
-                            }else{
-                                target.remove();
-                                setTimeout(() => {
-                                alert('地図を見つけられませんでした。');
-                                }, 100);
-                            }
-                        });
-                    }
-                </script>
-                <script src= "https://maps.googleapis.com/maps/api/js?key=<%= @google_api_key %>&callback=initMap" async defer ></script>
                 <h3>施設の詳細(施設の名前や階数など)</h3>
                 <p><%= @post.spot_detail %></p>
                 <h3>その他（持ち物や注意点）</h3>
@@ -124,9 +96,6 @@
                 <h4>コメントはありません。</h4>
             </div>
         <% end %>
-        <%# <div class="relode-btn">
-            <i class="fa-solid fa-circle-plus" style="color: #f7cbe8;"></i>
-        </div> %>
     </div>
 </div>
 <%# モーダルの表示 %>
@@ -150,3 +119,31 @@
     </div>
 </div>
 <div class="mask-comment"></div>
+<%# Google mapの表示 %> 
+<script>
+    let map;
+    function initMap(){
+        const target = document.getElementById('location-map');
+        const geocoder = new google.maps.Geocoder();
+        const address = document.getElementById('location-address').children[0].textContent;
+
+        geocoder.geocode({ address: address}, function(results, status){
+            if(status === 'OK' && results[0] ){
+                map = new google.maps.Map(target, {
+                    center: results[0].geometry.location,
+                    zoom: 15
+                });
+                marker = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: map
+                });
+            }else{
+                target.remove();
+                setTimeout(() => {
+                alert('地図を見つけられませんでした。');
+                }, 100);
+            }
+        });
+    }
+</script>
+<script src= "https://maps.googleapis.com/maps/api/js?key=<%= @google_api_key %>&callback=initMap" async defer ></script>
