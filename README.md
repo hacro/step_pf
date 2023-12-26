@@ -37,10 +37,10 @@ __⇩⇩Smiley-days コメントもできます！⇩⇩__
  - Puma
  - Docker
  - AWS
-  - VPC
-  - EC2
-  - RDS
-  - Route 53
+   - VPC
+   - EC2
+   - RDS
+   - Route 53
 - RSpec
 - devise
 - Google Maps Platform
