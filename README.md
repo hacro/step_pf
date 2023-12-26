@@ -1,24 +1,6 @@
-# README
+<h1>Smiley-Days</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<p>このSmiley-daysというアプリは、子育て奮闘中のパパママやおじいちゃん・おばあちゃんに向けたサイトとなっております。</br>
+おでかけがしたいけど、どこでおむつ替えができるのかわからなくて不安。子供とおでかけするのに、毎回同じようなところになってしまって、新しく遊べるところが知りたい！</br>
+そういったお子様とのお出かけに関して、遊び場や休憩スポットを共有できるアプリケーションです。
+</p>
