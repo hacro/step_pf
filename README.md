@@ -8,17 +8,17 @@
 # このサイトのURLはこちら→[ https://smiley-days.net/ ]
 
 __⇩⇩Smiley-days トップページ⇩⇩__
-![App_top](./top.png)
+<img width="1320" alt="top" src="https://github.com/hacro/step_pf/assets/87082685/c5c0a4d9-6787-438d-aa49-136c2b2ae14a">
 
 
 
 __⇩⇩Smiley-days ポスト一覧画面に表示される投稿です⇩⇩__
-![index](./index.png)
+<img width="1275" alt="index" src="https://github.com/hacro/step_pf/assets/87082685/f0d436ef-d378-465c-871d-24fc78bf04c0">
 
 
 
 __⇩⇩Smiley-days コメントもできます！⇩⇩__
-![App_comment](./comment.png)
+<img width="1209" alt="comment" src="https://github.com/hacro/step_pf/assets/87082685/db7074b0-a4df-415a-81e0-15c3379ec1be">
 
 
 # 目的
@@ -30,7 +30,7 @@ __⇩⇩Smiley-days コメントもできます！⇩⇩__
 そのような思いから、今回このWebアプリケーションを作成いたしました。
 
 # AWS構成図
-
+![AWS_composition](https://github.com/hacro/step_pf/assets/87082685/38c72979-2c6c-4d0c-b377-ca545652a706)
 
 # 使用技術
  - Ruby 3.1.2
